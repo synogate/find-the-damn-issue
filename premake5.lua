@@ -1,10 +1,10 @@
-workspace "gatery-template"
+workspace "find-the-damn-issue"
     configurations { "Debug", "Release" }
     architecture "x64"
     symbols "On"
     flags { "MultiProcessorCompile" }
-    cppdialect "C++latest"
-    startproject "gatery-template"
+    cppdialect "C++20"
+    startproject "find-the-damn-issue"
 
     targetdir "%{wks.location}/bin/%{cfg.system}-%{cfg.architecture}-%{cfg.longname}"
     objdir "%{wks.location}/obj/%{cfg.system}-%{cfg.architecture}-%{cfg.longname}"
@@ -19,11 +19,11 @@ workspace "gatery-template"
         optimize "On"
 
     filter "system:linux"
-        buildoptions { "-std=c++2a", "-fcoroutines"}
+        buildoptions { "-std=c++20", "-fcoroutines"}
 
-    project "gatery-template"
+    project "find-the-damn-issue"
         kind "ConsoleApp"
-        links { "gatery"}
+        links { "gatery_core", "gatery_scl" }
         files { "source/**" }
         includedirs { 
             "%{prj.location}/libs/gatery/source",

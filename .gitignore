@@ -21,3 +21,8 @@ vhdl
 *.vcd
 *.dot
 *.svg
+
+*.vhd
+*.filter
+*.gtkw
+*.surfer
