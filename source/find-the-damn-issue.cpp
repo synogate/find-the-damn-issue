@@ -27,6 +27,12 @@ struct FindTheDamnIssue
 	enum class OperatingMode { UART, BitBang };
 	Reg<Enum<OperatingMode>> operatingMode{ OperatingMode::UART };
 
+	UInt uio_in = 8_b;
+	UInt uio_out = 8_b;
+	UInt uio_oe = 8_b;
+	UInt ui_in = 8_b;
+	UInt uo_out = 8_b;
+
 	Vector<Bit> uio_in_simu;
 	Bit dtr, rts;
 	Bit tx, rx;
@@ -101,9 +107,7 @@ struct FindTheDamnIssue
 		HCL_NAMED(bitbangOut);
 
 		// uart rx
-		rx.simulationOverride(reg(tx)); // loop back for simple testing
 		HCL_NAMED(rx);
-
 		scl::RvStream<BVec> uartOut = 
 			scl::uartRx(rx, baudRate)
 			.add(scl::Ready{});
@@ -148,9 +152,8 @@ protected:
 
 	virtual void pin(scl::BitBangEngine& bitbang)
 	{
-		UInt uio_in = 8_b;
-		UInt uio_out = ConstUInt(8_b);
-		UInt uio_oe = ConstUInt(8_b);
+		uio_out = ConstUInt(8_b);
+		uio_oe = ConstUInt(8_b);
 		for (size_t i = 0; i < 6; ++i)
 		{
 			bitbang.io(i).in = uio_in[i];
@@ -168,14 +171,8 @@ protected:
 		pinIn(uio_in, "uio_in");
 		pinOut(uio_out, "uio_out");
 		pinOut(uio_oe, "uio_oe");
-		
-		uio_in_simu.resize(8);
-		for (size_t i = 0; i < 6; ++i)
-			uio_in_simu[i] = tristatePin(uio_out[i], uio_oe[i], { .simulationOnlyPin = true });
-		uio_in.simulationOverride(pack(uio_in_simu));
-	
-		UInt ui_in = 8_b;
-		UInt uo_out = ConstUInt(8_b);
+			
+		uo_out = ConstUInt(8_b);
 		for (size_t i = 0; i < 8; ++i)
 		{
 			bitbang.io(i + 8).in = ui_in[i];
@@ -234,7 +231,31 @@ protected:
 		scl::usb::SimuHostController controller(*circuit.usbSimuPhy, circuit.usb.descriptor());
 
 		simulator.addSimulationProcess([&]() -> SimProcess {
-			simu(circuit.uio_in_simu[2]) = '1';
+			bool mirrorTx2Rx = true;
+			fork([&]() -> SimProcess {
+				// a simple tristate pin simulation
+				sim::DefaultBitVectorState in;
+				in.resize(8);
+
+				while (true)
+				{
+					co_await AfterClk(sysclk);
+					in = simu(circuit.uio_out);
+					*in.data(sim::DefaultConfig::DEFINED) &= simu(circuit.uio_oe);
+
+					if (mirrorTx2Rx)
+					{
+						in.copyRange(2, in, 1, 1);
+					}
+					else
+					{
+						// always drive MISO high for test reading FF
+						in.set(sim::DefaultConfig::DEFINED, 2);
+						in.set(sim::DefaultConfig::VALUE, 2);
+					}
+					simu(circuit.uio_in) = in;
+				}
+			});
 
 			co_await OnClk(sysclk);
 			//co_await controller.testWindowsDeviceDiscovery();
@@ -273,6 +294,8 @@ protected:
 
 			if (m_simulateBitbang)
 			{
+				mirrorTx2Rx = false;
+
 				sim::SimulationContext::current()->onDebugMessage(nullptr, "set operating mode to bitbang");
 				std::vector<uint8_t> opModeBitbangCommand = { 0x00, 0xE1, 0x00, 0x00,  /* stop */ 0x00, /* parity */ 0x02, /* data bits */ 0x08 };
 				co_await controller.controlTransferOut({
