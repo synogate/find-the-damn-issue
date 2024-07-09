@@ -130,19 +130,13 @@ protected:
 		// setup usb descriptor
 		scl::usb::Descriptor& desc = usb.descriptor();
 
-		desc.add(scl::usb::DeviceDescriptor{
-			.Class = scl::usb::InterfaceAssociationDescriptor::DevClass,
-			.SubClass = scl::usb::InterfaceAssociationDescriptor::DevSubClass,
-			.Protocol = scl::usb::InterfaceAssociationDescriptor::DevProtocol,
+		desc.add(scl::usb::DeviceDescriptor{ 
+			.Class = scl::usb::ClassCode::Communications_and_CDC_Control,
 			.ManufacturerName = desc.allocateStringIndex(L"Synogate"),
 			.ProductName = desc.allocateStringIndex(L"FindTheDamnIssue")
 		});
-
 		desc.add(scl::usb::ConfigurationDescriptor{});
-		desc.add(scl::usb::InterfaceAssociationDescriptor{});
-		scl::usb::virtualCOMsetup(usb, 0, 1);
-		desc.add(scl::usb::InterfaceAssociationDescriptor{});
-		scl::usb::virtualCOMsetup(usb, 1, 2);
+		scl::usb::virtualCOMsetup(usb, 0, 1, 2);
 
 		desc.changeMaxPacketSize(8);
 		desc.finalize();
@@ -207,10 +201,7 @@ public:
 		std::cout << "process netlist" << std::endl;
 		design.postprocess();
 
-		std::cout << "export" << std::endl;
-		exportVHDL();
-		
-		std::cout << "simulate" << std::endl;
+		std::cout << "export & simulate" << std::endl;
 		simulate(sysclk, circuit);
 
 		std::cout << "done" << std::endl;
@@ -218,17 +209,15 @@ public:
 
 protected:
 
-	virtual void exportVHDL()
-	{
-		vhdl::VHDLExport vhdl(m_configName + "/" + m_configName + ".vhd");
-		vhdl.targetSynthesisTool(new IntelQuartus());
-		vhdl(DesignScope::get()->getCircuit());
-	}
-
 	virtual void simulate(Clock& sysclk, FindTheDamnIssue& circuit)
 	{
 		sim::ReferenceSimulator simulator;
 		scl::usb::SimuHostController controller(*circuit.usbSimuPhy, circuit.usb.descriptor());
+
+		vhdl::VHDLExport vhdl(m_configName + "/" + m_configName + ".vhd");
+		vhdl.targetSynthesisTool(new IntelQuartus());
+		//vhdl.addTestbenchRecorder(simulator, m_configName + "_tb", false);
+		vhdl(DesignScope::get()->getCircuit());
 
 		simulator.addSimulationProcess([&]() -> SimProcess {
 			bool mirrorTx2Rx = true;
@@ -334,7 +323,7 @@ protected:
 		});
 
 
-		sim::VCDSink vcd(DesignScope::get()->getCircuit(), simulator, (m_configName + ".vcd").c_str());
+		sim::VCDSink vcd(DesignScope::get()->getCircuit(), simulator, (m_configName + "/" + m_configName + ".vcd").c_str());
 		vcd.addAllPins();
 		vcd.addAllNamedSignals();
 		vcd.addAllTaps();
@@ -363,12 +352,12 @@ protected:
 
 		auto* pll2 = DesignScope::get()->createNode<scl::arch::intel::ALTPLL>();
 		pll2->setClock(0, clk50);
-		return pll2->generateOutClock(0, 24, 25, 50, 0);
+		return pll2->generateOutClock(0, 24, 100, 50, 0);
 	}
 
 protected:
 	DesignScope design;
-	std::string m_configName = "find-the-damn-issue_deca";
+	std::string m_configName = "find_the_damn_issue_deca";
 	bool m_simulateUart = true;
 	bool m_simulateBitbang = true;
 };

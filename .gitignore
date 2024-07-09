@@ -23,6 +23,14 @@ vhdl
 *.svg
 
 *.vhd
+*.v
 *.filter
 *.gtkw
 *.surfer
+*.testvectors
+work-obj08.cf
+
+db
+incremental_db
+output_files
+*.qws
