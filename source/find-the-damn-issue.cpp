@@ -470,6 +470,8 @@ public:
 	FindTheDamnIssueGeneratorSky130()
 	{
 		m_configName = "find_the_damn_issue_sky130";
+		hlim::NodeGroup::configTreeReset();
+		hlim::NodeGroup::configTree("scl_recoverDataDifferential*", "version", "sky130");
 	}
 
 	virtual void selectDevice()
@@ -505,6 +507,8 @@ public:
 	FindTheDamnIssueGeneratorDeca()
 	{
 		m_configName = "find_the_damn_issue_deca";
+		hlim::NodeGroup::configTreeReset();
+		hlim::NodeGroup::configTree("scl_recoverDataDifferential*", "version", "altera");
 	}
 
 	virtual void selectDevice()
