@@ -19,8 +19,64 @@
 
 using namespace gtry;
 
+class UsbPhyRedirected : public scl::usb::GpioPhy
+{
+public:
+	UsbPhyRedirected() : sysclk(ClockScope::getClk()) {}
+
+	void tristateSignals(UInt* in, UInt* out, UInt* oe)
+	{
+		uio_in = in;
+		uio_out = out;
+		uio_oe = oe;
+	}
+
+	Symbol symbolDrive() const
+	{
+		return symbolOut;
+	}
+
+	void symbolCapture(Symbol state)
+	{
+		symbolIn = state;
+	}
+
+protected:
+	virtual Symbol lineState() const override
+	{
+		return symbolIn;
+	}
+
+	virtual void lineState(Symbol state) override
+	{
+		symbolOut = state;
+		symbolIn = state;
+	}
+
+	virtual std::tuple<Bit, Bit> pin(std::tuple<Bit, Bit> out, Bit en) override
+	{
+		uio_out->at(6) = allowClockDomainCrossing(std::get<0>(out), ClockScope::getClk(), sysclk);
+		uio_out->at(7) = allowClockDomainCrossing(std::get<1>(out), ClockScope::getClk(), sysclk);
+		uio_oe->at(6) = allowClockDomainCrossing(en, ClockScope::getClk(), sysclk);
+		uio_oe->at(7) = allowClockDomainCrossing(en, ClockScope::getClk(), sysclk);
+		return { 
+			allowClockDomainCrossing(uio_in->at(6), sysclk, ClockScope::getClk()),
+			allowClockDomainCrossing(uio_in->at(7), sysclk, ClockScope::getClk()),
+		};
+	}
+
+private:
+	Clock sysclk;
+	UInt* uio_in = nullptr;
+	UInt* uio_out = nullptr;
+	UInt* uio_oe = nullptr;
+	Symbol symbolOut = Symbol::J;
+	Symbol symbolIn = Symbol::J;
+};
+
 struct FindTheDamnIssue
 {
+	UsbPhyRedirected usbPhy;
 	scl::usb::Function usb;
 	scl::usb::SimuBusBase* usbSimuPhy;
 
@@ -28,10 +84,10 @@ struct FindTheDamnIssue
 	Reg<Enum<OperatingMode>> operatingMode{ OperatingMode::UART };
 
 	UInt uio_in = 8_b;
-	UInt uio_out = 8_b;
-	UInt uio_oe = 8_b;
+	UInt uio_out = ConstUInt(8_b);
+	UInt uio_oe = ConstUInt(8_b);
 	UInt ui_in = 8_b;
-	UInt uo_out = 8_b;
+	UInt uo_out = ConstUInt(8_b);
 
 	Vector<Bit> uio_in_simu;
 	Bit dtr, rts;
@@ -141,13 +197,13 @@ protected:
 		desc.changeMaxPacketSize(8);
 		desc.finalize();
 
-		usbSimuPhy = &usb.setup<scl::usb::GpioPhy>();
+		usbPhy.tristateSignals(&uio_in, &uio_out, &uio_oe);
+		usbSimuPhy = &usbPhy;
+		usb.setup(usbPhy);
 	}
 
 	virtual void pin(scl::BitBangEngine& bitbang)
 	{
-		uio_out = ConstUInt(8_b);
-		uio_oe = ConstUInt(8_b);
 		for (size_t i = 0; i < 6; ++i)
 		{
 			bitbang.io(i).in = uio_in[i];
@@ -158,7 +214,7 @@ protected:
 		IF(operatingMode.current() == OperatingMode::UART)
 		{
 			uio_out[1] = tx;
-			uio_oe = 0b0000'0010; // tx out, others in
+			uio_oe.lower(6_b) = 0b00'00'10; // tx out, others in
 		}
 		rx = uio_in[2];
 
@@ -166,7 +222,6 @@ protected:
 		pinOut(uio_out, "uio_out");
 		pinOut(uio_oe, "uio_oe");
 			
-		uo_out = ConstUInt(8_b);
 		for (size_t i = 0; i < 8; ++i)
 		{
 			bitbang.io(i + 8).in = ui_in[i];
@@ -228,9 +283,38 @@ protected:
 
 				while (true)
 				{
-					co_await AfterClk(sysclk);
+					size_t oe = simu(circuit.uio_oe);
 					in = simu(circuit.uio_out);
-					*in.data(sim::DefaultConfig::DEFINED) &= simu(circuit.uio_oe);
+					*in.data(sim::DefaultConfig::DEFINED) &= oe;
+
+					if (oe >> 6)
+					{
+						// usb circuit -> function model
+						switch (in.extract(sim::DefaultConfig::VALUE, 6, 2))
+						{
+						case 0b00:
+							circuit.usbPhy.symbolCapture(scl::usb::GpioPhy::Symbol::SE0);
+							break;
+						case 0b01:
+							circuit.usbPhy.symbolCapture(scl::usb::GpioPhy::Symbol::J);
+							break;
+						case 0b10:
+							circuit.usbPhy.symbolCapture(scl::usb::GpioPhy::Symbol::K);
+							break;
+						default:
+							circuit.usbPhy.symbolCapture(scl::usb::GpioPhy::Symbol::undefined);
+							break;
+						}
+					}
+					else
+					{
+						// usb function model -> circuit
+						in.set(sim::DefaultConfig::DEFINED, 6);
+						in.set(sim::DefaultConfig::DEFINED, 7);
+						in.set(sim::DefaultConfig::VALUE, 6, circuit.usbPhy.symbolDrive() == scl::usb::GpioPhy::Symbol::J);
+						in.set(sim::DefaultConfig::VALUE, 7, circuit.usbPhy.symbolDrive() == scl::usb::GpioPhy::Symbol::K);
+						circuit.usbPhy.symbolCapture(circuit.usbPhy.symbolDrive());
+					}
 
 					if (mirrorTx2Rx)
 					{
@@ -243,6 +327,7 @@ protected:
 						in.set(sim::DefaultConfig::VALUE, 2);
 					}
 					simu(circuit.uio_in) = in;
+					co_await AfterClk(sysclk);
 				}
 			});
 
