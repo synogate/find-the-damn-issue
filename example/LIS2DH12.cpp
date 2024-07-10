@@ -128,6 +128,9 @@ void lis2dh13_threewire(boost::asio::serial_port& serial)
 
 int main()
 {
+	bitbang::CLK = 0b1000;
+	bitbang::CS  = 0b0001;
+
 	try {
 		boost::asio::io_service io;
 		boost::asio::serial_port serial = bitbang::device_open(io, g_device_path);
