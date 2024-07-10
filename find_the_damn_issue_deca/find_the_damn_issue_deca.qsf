@@ -9,7 +9,6 @@ set_global_assignment -name TOP_LEVEL_ENTITY top
 set_global_assignment -name SDC_FILE find_the_damn_issue_deca.sdc
 set_global_assignment -name VHDL_FILE find_the_damn_issue_deca.vhd
 
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to *
 
 #============================================================
 # disable config pin so bank8 can use 1.2V 
@@ -41,29 +40,35 @@ set_instance_assignment -name IO_STANDARD "1.2 V" -to uo_out*
 # SW
 #============================================================
 set_location_assignment PIN_J21 -to ui_in[0]
-set_instance_assignment -name IO_STANDARD "1.5 V Schmitt Trigger" -to ui_in[0]
+set_instance_assignment -name IO_STANDARD "1.5 V SCHMITT TRIGGER" -to ui_in[0]
 set_location_assignment PIN_J22 -to ui_in[1]
-set_instance_assignment -name IO_STANDARD "1.5 V Schmitt Trigger" -to ui_in[1]
+set_instance_assignment -name IO_STANDARD "1.5 V SCHMITT TRIGGER" -to ui_in[1]
 
 #============================================================
 # KEY
 #============================================================
 set_location_assignment PIN_H21 -to ui_in[2]
-set_instance_assignment -name IO_STANDARD "1.5 V Schmitt Trigger" -to ui_in[2]
+set_instance_assignment -name IO_STANDARD "1.5 V SCHMITT TRIGGER" -to ui_in[2]
 set_location_assignment PIN_H22 -to ui_in[3]
-set_instance_assignment -name IO_STANDARD "1.5 V Schmitt Trigger" -to ui_in[3]
+set_instance_assignment -name IO_STANDARD "1.5 V SCHMITT TRIGGER" -to ui_in[3]
 
 # LM71
 #set_location_assignment PIN_AA1 -to uio3
+#set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to uio3
 #set_location_assignment PIN_Y2 -to uio1
 #set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to uio1
+#set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to uio1
 #set_location_assignment PIN_AB4 -to uio0
 #set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to uio0
+#set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to uio0
 
 # HDC1000
 #set_location_assignment PIN_Y10 -to uio3
+#set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to uio3
 #set_location_assignment PIN_AA10 -to uio1
+#set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to uio1
 #set_location_assignment PIN_AB9 -to uio0
+#set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to uio0
 
 # LIS2DH12
 set_location_assignment PIN_B5 -to uio3
@@ -76,12 +81,14 @@ set_location_assignment PIN_E9 -to uio0
 set_instance_assignment -name IO_STANDARD "1.2 V" -to uio0
 
 # oscilloscope probes
-set_location_assignment PIN_U15 -to DBG_SCL
-set_location_assignment PIN_R13 -to DBG_MOSI
-set_location_assignment PIN_W14 -to DBG_MISO
-set_location_assignment PIN_Y17 -to DBG_CS
+#set_location_assignment PIN_U15 -to DBG_SCL
+#set_location_assignment PIN_R13 -to DBG_MOSI
+#set_location_assignment PIN_W14 -to DBG_MISO
+#set_location_assignment PIN_Y17 -to DBG_CS
 
 # USB P N
 set_location_assignment PIN_W18 -to uio6
 set_location_assignment PIN_Y18 -to uio7
 #set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to USB_D*
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to uio6
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to uio7
