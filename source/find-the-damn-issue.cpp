@@ -218,9 +218,19 @@ protected:
 		}
 		rx = uio_in[2];
 
-		pinIn(uio_in, "uio_in");
-		pinOut(uio_out, "uio_out");
-		pinOut(uio_oe, "uio_oe");
+		HCL_NAMED(uio_in);
+		HCL_NAMED(uio_out);
+		HCL_NAMED(uio_oe);
+		uio_in = ConstUInt(8_b);
+		uio_in_simu.resize(8);
+		for (size_t i = 0; i < uio_in.size(); ++i)
+		{
+			uio_in_simu[i] = tristatePin(uio_out[i], uio_oe[i], { .highImpedanceValue = PinNodeParameter::HighImpedanceValue::PULL_UP }).setName("uio" + std::to_string(i));
+			uio_in[i] = uio_in_simu[i];
+		}
+		//pinIn(uio_in, "uio_in");
+		//pinOut(uio_out, "uio_out");
+		//pinOut(uio_oe, "uio_oe");
 			
 		for (size_t i = 0; i < 8; ++i)
 		{
@@ -326,7 +336,15 @@ protected:
 						in.set(sim::DefaultConfig::DEFINED, 2);
 						in.set(sim::DefaultConfig::VALUE, 2);
 					}
+
+					if (circuit.uio_in_simu.empty())
 					simu(circuit.uio_in) = in;
+					else
+					{
+						simu(circuit.uio_in_simu[2]) = in.extract(2, 1);
+						simu(circuit.uio_in_simu[6]) = in.extract(6, 1);
+						simu(circuit.uio_in_simu[7]) = in.extract(7, 1);
+					}
 					co_await AfterClk(sysclk);
 				}
 			});
