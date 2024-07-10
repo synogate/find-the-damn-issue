@@ -221,16 +221,7 @@ protected:
 		HCL_NAMED(uio_in);
 		HCL_NAMED(uio_out);
 		HCL_NAMED(uio_oe);
-		uio_in = ConstUInt(8_b);
-		uio_in_simu.resize(8);
-		for (size_t i = 0; i < uio_in.size(); ++i)
-		{
-			uio_in_simu[i] = tristatePin(uio_out[i], uio_oe[i], { .highImpedanceValue = PinNodeParameter::HighImpedanceValue::PULL_UP }).setName("uio" + std::to_string(i));
-			uio_in[i] = uio_in_simu[i];
-		}
-		//pinIn(uio_in, "uio_in");
-		//pinOut(uio_out, "uio_out");
-		//pinOut(uio_oe, "uio_oe");
+		pinUio();
 			
 		for (size_t i = 0; i < 8; ++i)
 		{
@@ -247,6 +238,29 @@ protected:
 		pinIn(ui_in, "ui_in");
 		pinOut(uo_out, "uo_out");
 	}
+
+	virtual void pinUio()
+	{
+		pinIn(uio_in, "uio_in");
+		pinOut(uio_out, "uio_out");
+		pinOut(uio_oe, "uio_oe");
+	}
+};
+
+class FindTheDamnIssueFPGA : public FindTheDamnIssue
+{
+protected:
+	virtual void pinUio()
+	{
+		// the FPGA version needs to create tristate buffers where the tiny tapout version uses seperate in, out, en signals
+		uio_in = ConstUInt(8_b);
+		uio_in_simu.resize(8);
+		for (size_t i = 0; i < uio_in.size(); ++i)
+		{
+			uio_in_simu[i] = tristatePin(uio_out[i], uio_oe[i], { .highImpedanceValue = PinNodeParameter::HighImpedanceValue::PULL_UP }).setName("uio" + std::to_string(i));
+			uio_in[i] = uio_in_simu[i];
+		}
+	}
 };
 
 class FindTheDamnIssueGenerator
@@ -260,14 +274,14 @@ public:
 		Clock sysclk = generateClock();
 		ClockScope clkScp(sysclk);
 
-		FindTheDamnIssue circuit;
-		circuit.generate();
+		auto circuit = createCircuit();
+		circuit->generate();
 
 		std::cout << "process netlist" << std::endl;
 		design.postprocess();
 
 		std::cout << "export & simulate" << std::endl;
-		simulate(sysclk, circuit);
+		simulate(sysclk, *circuit);
 
 		std::cout << "done" << std::endl;
 	}
@@ -280,7 +294,7 @@ protected:
 		scl::usb::SimuHostController controller(*circuit.usbSimuPhy, circuit.usb.descriptor());
 
 		vhdl::VHDLExport vhdl(m_configName + "/" + m_configName + ".vhd");
-		vhdl.targetSynthesisTool(new IntelQuartus());
+		selectSynthesisTool(vhdl);
 		//vhdl.addTestbenchRecorder(simulator, m_configName + "_tb", false);
 		vhdl(DesignScope::get()->getCircuit());
 
@@ -437,12 +451,67 @@ protected:
 		simulator.commitState();
 	}
 
+	virtual void selectDevice() = 0;
+	virtual Clock generateClock() = 0;
+	virtual void selectSynthesisTool(vhdl::VHDLExport& vhdl) = 0;
+	virtual std::unique_ptr<FindTheDamnIssue> createCircuit() = 0;
+
+protected:
+	DesignScope design;
+	std::string m_configName = "blank";
+	bool m_simulateUart = true;
+	bool m_simulateBitbang = true;
+	
+};
+
+class FindTheDamnIssueGeneratorSky130 : public FindTheDamnIssueGenerator
+{
+public:
+	FindTheDamnIssueGeneratorSky130()
+	{
+		m_configName = "find_the_damn_issue_sky130";
+	}
+
+	virtual void selectDevice()
+	{
+	}
+
+	virtual Clock generateClock()
+	{
+		Clock clk12{ ClockConfig{
+			.absoluteFrequency = 12'000'000,
+			.name = "clk",
+			.resetName = "rst_n",
+			.resetType = ClockConfig::ResetType::ASYNCHRONOUS,
+			.resetActive = ClockConfig::ResetActive::LOW,
+		} };
+
+		return clk12;
+	}
+
+	virtual void selectSynthesisTool(vhdl::VHDLExport& vhdl)
+	{
+	}
+
+	virtual std::unique_ptr<FindTheDamnIssue> createCircuit()
+	{
+		return std::make_unique<FindTheDamnIssue>();
+	}
+};
+
+class FindTheDamnIssueGeneratorDeca : public FindTheDamnIssueGenerator
+{
+public:
+	FindTheDamnIssueGeneratorDeca()
+	{
+		m_configName = "find_the_damn_issue_deca";
+	}
+
 	virtual void selectDevice()
 	{
 		auto device = std::make_unique<scl::IntelDevice>();
 		device->setupDevice("10M50DAF672I6");
 		DesignScope::get()->setTargetTechnology(std::move(device));
-
 	}
 
 	virtual Clock generateClock()
@@ -458,17 +527,29 @@ protected:
 		return pll2->generateOutClock(0, 24, 100, 50, 0);
 	}
 
-protected:
-	DesignScope design;
-	std::string m_configName = "find_the_damn_issue_deca";
-	bool m_simulateUart = true;
-	bool m_simulateBitbang = true;
+	virtual void selectSynthesisTool(vhdl::VHDLExport& vhdl)
+	{
+		vhdl.targetSynthesisTool(new IntelQuartus());
+	}
+
+	virtual std::unique_ptr<FindTheDamnIssue> createCircuit()
+	{
+		return std::make_unique<FindTheDamnIssueFPGA>();
+	}
 };
 
 int main()
 {
-	FindTheDamnIssueGenerator circuit;
-	circuit.generate();
+	{
+		std::cout << "target sky130\n";
+		FindTheDamnIssueGeneratorSky130 circuit;
+		circuit.generate();
+	}
+	{
+		std::cout << "target deca\n";
+		FindTheDamnIssueGeneratorDeca circuit;
+		circuit.generate();
+	}
 	return 0;
 }
 
