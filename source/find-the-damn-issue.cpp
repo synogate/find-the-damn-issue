@@ -295,7 +295,7 @@ protected:
 
 		vhdl::VHDLExport vhdl(m_configName + "/" + m_configName + ".vhd");
 		selectSynthesisTool(vhdl);
-		//vhdl.addTestbenchRecorder(simulator, m_configName + "_tb", false);
+		vhdl.addTestbenchRecorder(simulator, m_configName + "_tb", false);
 		vhdl(DesignScope::get()->getCircuit());
 
 		simulator.addSimulationProcess([&]() -> SimProcess {
@@ -540,16 +540,19 @@ public:
 
 int main()
 {
+#if 1
 	{
 		std::cout << "target sky130\n";
 		FindTheDamnIssueGeneratorSky130 circuit;
 		circuit.generate();
 	}
+#endif
+#if 0
 	{
 		std::cout << "target deca\n";
 		FindTheDamnIssueGeneratorDeca circuit;
 		circuit.generate();
 	}
+#endif
 	return 0;
 }
-
