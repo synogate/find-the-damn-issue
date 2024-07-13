@@ -266,6 +266,9 @@ protected:
 class FindTheDamnIssueGenerator
 {
 public:
+	FindTheDamnIssueGenerator() : design("tt_um_find_the_damn_issue")
+	{}
+
 	void generate()
 	{
 		std::cout << "generate " << m_configName << std::endl;

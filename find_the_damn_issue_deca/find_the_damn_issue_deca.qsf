@@ -5,7 +5,7 @@ set_global_assignment -name ALLOW_REGISTER_RETIMING OFF
 set_global_assignment -name NUM_PARALLEL_PROCESSORS ALL
 set_global_assignment -name DEVICE 10M50DAF484C6GES
 set_global_assignment -name FAMILY "MAX 10"
-set_global_assignment -name TOP_LEVEL_ENTITY top
+set_global_assignment -name TOP_LEVEL_ENTITY tt_um_find_the_damn_issue
 set_global_assignment -name SDC_FILE find_the_damn_issue_deca.sdc
 set_global_assignment -name VHDL_FILE find_the_damn_issue_deca.vhd
 

@@ -21412,7 +21412,7 @@ module usbfunction
       n2658_q <= s_unnamed_mux2_5;
 endmodule
 
-module top
+module tt_um_find_the_damn_issue
   (input  clk,
    input  rst_n,
    input  [7:0] uio_in,
