@@ -22,8 +22,6 @@ vhdl
 *.dot
 *.svg
 
-*.vhd
-*.v
 *.filter
 *.gtkw
 *.surfer
@@ -48,3 +46,6 @@ test/sim_build
 test/__pycache__/
 test/results.xml
 test/gate_level_netlist.v
+
+/find_the_damn_issue_*/find*.vhd
+/find_the_damn_issue_*/find*.v
