@@ -478,7 +478,7 @@ public:
 		m_configName = "find_the_damn_issue_sky130";
 		hlim::NodeGroup::configTreeReset();
 		hlim::NodeGroup::configTree("scl_recoverDataDifferential*", "version", "sky130");
-		hlim::NodeGroup::configTree("scl_recoverDataDifferential*", "numDelayElements", "6");
+		hlim::NodeGroup::configTree("scl_recoverDataDifferential*", "numDelayElements", "3");
 	}
 
 	virtual void selectDevice()
