@@ -2,8 +2,8 @@
 project:
   title:        "Find The Damn Issue"      # Project title
   author:       "Synogate"      # Your name
-  discord:      ""      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
-  description:  "This is a temporary description of this project"      # One line description of what your project does
+  discord:      "mio0341"      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
+  description:  "USB to UART/SPI/I2C/JTAG/GPIO adapter"      # One line description of what your project does
   language:     "Gatery" # other examples include SystemVerilog, Amaranth, VHDL, etc
   clock_hz:     12000000       # Clock frequency in Hz (or 0 if not applicable)
 
@@ -17,41 +17,40 @@ project:
   # Source files must be in ./src and you must list each source file separately, one per line.
   # Don't forget to also update `PROJECT_SOURCES` in test/Makefile.
   source_files:
-    - "find_the_damn_issue.v"
     - "find_the_damn_issue_sky130.v"
     - "cell_wrapper.v"
 
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 pinout:
   # Inputs
-  ui[0]: ""
-  ui[1]: ""
-  ui[2]: ""
-  ui[3]: ""
-  ui[4]: ""
-  ui[5]: ""
-  ui[6]: ""
-  ui[7]: ""
+  ui[0]: "GPIOh0"
+  ui[1]: "GPIOh1"
+  ui[2]: "GPIOh2"
+  ui[3]: "GPIOh3"
+  ui[4]: "GPIOh4"
+  ui[5]: "GPIOh5"
+  ui[6]: "GPIOh6"
+  ui[7]: "GPIOh7"
 
   # Outputs
-  uo[0]: ""
-  uo[1]: ""
-  uo[2]: ""
-  uo[3]: ""
-  uo[4]: ""
-  uo[5]: ""
-  uo[6]: ""
-  uo[7]: ""
+  uo[0]: "GPIOh0/DTR"
+  uo[1]: "GPIOh1/RTS"
+  uo[2]: "GPIOh2"
+  uo[3]: "GPIOh3"
+  uo[4]: "GPIOh4"
+  uo[5]: "GPIOh5"
+  uo[6]: "GPIOh6"
+  uo[7]: "GPIOh7"
 
   # Bidirectional pins
-  uio[0]: "temporary"
-  uio[1]: "temporary1"
-  uio[2]: "temporary2"
-  uio[3]: "temporary3"
-  uio[4]: "temporary4"
-  uio[5]: "temporary5"
-  uio[6]: "temporary6"
-  uio[7]: "temporary7"
+  uio[0]: "GPIOl0-CS"
+  uio[1]: "GPIOl1-MOSI/TX"
+  uio[2]: "GPIOl2-MISO/RX"
+  uio[3]: "GPIOl3-CLK"
+  uio[4]: "GPIOl4-TMS"
+  uio[5]: "GPIOl5-WAIT"
+  uio[6]: "USB_DP"
+  uio[7]: "USB_DN"
 
 # Do not change!
 yaml_version: 6
