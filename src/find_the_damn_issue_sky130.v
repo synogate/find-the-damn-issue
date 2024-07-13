@@ -9011,11 +9011,11 @@ module functionreset
   assign n6678_o = s_unnamed_or_s0timer_eq_const_0_delayed1 ? 7'b0000000 : in_unnamed_3;
   /* find_the_damn_issue_sky130.vhd:3594:17  */
   assign n6680_o = s_unnamed_or_s0timer_eq_const_0_delayed1 ? 4'b0000 : in_unnamed_2;
-  /* find_the_damn_issue_sky130.vhd:3601:93  */
+  /* find_the_damn_issue_sky130.vhd:3600:93  */
   assign n6683_o = s_s0timer == 10'b0000000000;
   /* find_the_damn_issue_sky130.vhd:24:17  */
   assign n6690_o = n6683_o ? 1'b1 : 1'b0;
-  /* find_the_damn_issue_sky130.vhd:3601:66  */
+  /* find_the_damn_issue_sky130.vhd:3600:66  */
   assign n6691_o = in_unnamed_5 | n6690_o;
   /* find_the_damn_issue_sky130.vhd:3608:27  */
   assign n6698_o = ~rst_n;
@@ -17470,29 +17470,29 @@ module usbfunction
   wire n836_o;
   wire n837_o;
   wire [23:0] n838_o;
-  wire [1:0] n839_o;
-  wire n842_o;
+  wire n841_o;
+  wire n848_o;
   wire n849_o;
-  wire n850_o;
-  wire n853_o;
-  wire n860_o;
-  wire n861_o;
-  wire n862_o;
-  wire n863_o;
-  wire [23:0] n864_o;
+  wire [55:0] n850_o;
+  wire [63:0] n852_o;
+  wire [55:0] n853_o;
+  wire [63:0] n854_o;
+  wire [1:0] n855_o;
+  wire n858_o;
+  wire n865_o;
   wire n866_o;
-  wire n868_o;
-  wire n870_o;
-  wire n871_o;
-  wire n872_o;
-  wire n874_o;
+  wire n869_o;
+  wire n876_o;
   wire n877_o;
+  wire n878_o;
+  wire n879_o;
+  wire [23:0] n880_o;
+  wire n882_o;
   wire n884_o;
-  wire n885_o;
-  wire [55:0] n886_o;
-  wire [63:0] n888_o;
-  wire [55:0] n889_o;
-  wire [63:0] n890_o;
+  wire n886_o;
+  wire n887_o;
+  wire n888_o;
+  wire n890_o;
   wire n892_o;
   wire n899_o;
   wire [1:0] n900_o;
@@ -18559,9 +18559,9 @@ module usbfunction
   assign out_unnamed_mux1_3 = scl_usbgpiophy0_out_unnamed_mux1_3;
   assign out_set_line_coding_mux1 = n1278_o;
   assign out_unnamed_32 = n1355_o;
-  assign out_unnamed_eq_set_line_coding_and_m_phy_rx_error_not_and_m_pid_2_rewired_eq_const_11_and_nested_condition_m_phy_rx_eop = n863_o;
-  assign out_m_packetdata_2_rewired_mux1 = n864_o;
-  assign out_unnamed_mux2 = n874_o;
+  assign out_unnamed_eq_set_line_coding_and_m_phy_rx_error_not_and_m_pid_2_rewired_eq_const_11_and_nested_condition_m_phy_rx_eop = n879_o;
+  assign out_m_packetdata_2_rewired_mux1 = n880_o;
+  assign out_unnamed_mux2 = n890_o;
   assign out_unnamed_not_mux1 = rxfifointerface0_out_unnamed_not_mux1_2;
   assign out_unnamed_mux1_4 = rxfifointerface0_out_unnamed_mux1;
   assign out_unnamed_mux1_5 = rxfifointerface0_out_unnamed_mux1_2;
@@ -18814,9 +18814,9 @@ module usbfunction
   /* find_the_damn_issue_sky130.vhd:10166:16  */
   assign s_unnamed_mux2_5 = n665_o; // (signal)
   /* find_the_damn_issue_sky130.vhd:10167:16  */
-  assign s_m_packetdata_2_rewired_m_phy_rx_data_rewired = n890_o; // (signal)
+  assign s_m_packetdata_2_rewired_m_phy_rx_data_rewired = n854_o; // (signal)
   /* find_the_damn_issue_sky130.vhd:10168:16  */
-  assign s_m_phy_rx_valid_and_m_packetlen_lt_const_8 = n885_o; // (signal)
+  assign s_m_phy_rx_valid_and_m_packetlen_lt_const_8 = n849_o; // (signal)
   /* find_the_damn_issue_sky130.vhd:10169:16  */
   assign s_m_packetlen_2_mux3 = n1866_o; // (signal)
   /* find_the_damn_issue_sky130.vhd:10170:16  */
@@ -19112,52 +19112,52 @@ module usbfunction
   assign n837_o = s_m_packetdata[17];
   /* find_the_damn_issue_sky130.vhd:10661:63  */
   assign n838_o = s_m_packetdata[23:0];
-  /* find_the_damn_issue_sky130.vhd:10662:47  */
-  assign n839_o = s_m_pid[1:0];
-  /* find_the_damn_issue_sky130.vhd:10663:169  */
-  assign n842_o = in_unnamed_17 == 1'b1;
+  /* find_the_damn_issue_sky130.vhd:10663:116  */
+  assign n841_o = $unsigned(s_m_packetlen) < $unsigned(4'b1000);
   /* find_the_damn_issue_sky130.vhd:24:17  */
-  assign n849_o = n842_o ? 1'b1 : 1'b0;
-  /* find_the_damn_issue_sky130.vhd:10663:200  */
-  assign n850_o = ~s_m_phy_rx_error_2;
-  /* find_the_damn_issue_sky130.vhd:10663:260  */
-  assign n853_o = n839_o == 2'b11;
+  assign n848_o = n841_o ? 1'b1 : 1'b0;
+  /* find_the_damn_issue_sky130.vhd:10663:84  */
+  assign n849_o = s_m_phy_rx_valid_2 & n848_o;
+  /* find_the_damn_issue_sky130.vhd:10664:75  */
+  assign n850_o = s_m_packetdata[63:8];
+  /* find_the_damn_issue_sky130.vhd:10664:57  */
+  assign n852_o = {8'b00000000, n850_o};
+  /* find_the_damn_issue_sky130.vhd:10665:112  */
+  assign n853_o = n852_o[55:0];
+  /* find_the_damn_issue_sky130.vhd:10665:86  */
+  assign n854_o = {s_m_phy_rx_data_2, n853_o};
+  /* find_the_damn_issue_sky130.vhd:10667:47  */
+  assign n855_o = s_m_pid[1:0];
+  /* find_the_damn_issue_sky130.vhd:10668:169  */
+  assign n858_o = in_unnamed_17 == 1'b1;
   /* find_the_damn_issue_sky130.vhd:24:17  */
-  assign n860_o = n853_o ? 1'b1 : 1'b0;
-  /* find_the_damn_issue_sky130.vhd:10663:224  */
-  assign n861_o = n850_o & n860_o;
-  /* find_the_damn_issue_sky130.vhd:10663:269  */
-  assign n862_o = n861_o & n745_o;
-  /* find_the_damn_issue_sky130.vhd:10663:192  */
-  assign n863_o = n849_o & n862_o;
-  /* find_the_damn_issue_sky130.vhd:10664:17  */
-  assign n864_o = n863_o ? n838_o : in_unnamed_20;
+  assign n865_o = n858_o ? 1'b1 : 1'b0;
+  /* find_the_damn_issue_sky130.vhd:10668:200  */
+  assign n866_o = ~s_m_phy_rx_error_2;
+  /* find_the_damn_issue_sky130.vhd:10668:260  */
+  assign n869_o = n855_o == 2'b11;
+  /* find_the_damn_issue_sky130.vhd:24:17  */
+  assign n876_o = n869_o ? 1'b1 : 1'b0;
+  /* find_the_damn_issue_sky130.vhd:10668:224  */
+  assign n877_o = n866_o & n876_o;
+  /* find_the_damn_issue_sky130.vhd:10668:269  */
+  assign n878_o = n877_o & n745_o;
+  /* find_the_damn_issue_sky130.vhd:10668:192  */
+  assign n879_o = n865_o & n878_o;
   /* find_the_damn_issue_sky130.vhd:10669:17  */
-  assign n866_o = n863_o ? 1'b0 : in_unnamed_13;
-  /* find_the_damn_issue_sky130.vhd:10674:55  */
-  assign n868_o = n864_o == 24'b000000001110000100000000;
-  /* find_the_damn_issue_sky130.vhd:10674:99  */
-  assign n870_o = n835_o == 8'b00000010;
-  /* find_the_damn_issue_sky130.vhd:10674:85  */
-  assign n871_o = n868_o & n870_o;
-  /* find_the_damn_issue_sky130.vhd:10674:114  */
-  assign n872_o = n871_o & n863_o;
+  assign n880_o = n879_o ? n838_o : in_unnamed_20;
   /* find_the_damn_issue_sky130.vhd:10674:17  */
-  assign n874_o = n872_o ? 1'b1 : n866_o;
-  /* find_the_damn_issue_sky130.vhd:10680:116  */
-  assign n877_o = $unsigned(s_m_packetlen) < $unsigned(4'b1000);
-  /* find_the_damn_issue_sky130.vhd:24:17  */
-  assign n884_o = n877_o ? 1'b1 : 1'b0;
-  /* find_the_damn_issue_sky130.vhd:10680:84  */
-  assign n885_o = s_m_phy_rx_valid_2 & n884_o;
-  /* find_the_damn_issue_sky130.vhd:10681:75  */
-  assign n886_o = s_m_packetdata[63:8];
-  /* find_the_damn_issue_sky130.vhd:10681:57  */
-  assign n888_o = {8'b00000000, n886_o};
-  /* find_the_damn_issue_sky130.vhd:10682:112  */
-  assign n889_o = n888_o[55:0];
-  /* find_the_damn_issue_sky130.vhd:10682:86  */
-  assign n890_o = {s_m_phy_rx_data_2, n889_o};
+  assign n882_o = n879_o ? 1'b0 : in_unnamed_13;
+  /* find_the_damn_issue_sky130.vhd:10679:55  */
+  assign n884_o = n880_o == 24'b000000001110000100000000;
+  /* find_the_damn_issue_sky130.vhd:10679:99  */
+  assign n886_o = n835_o == 8'b00000010;
+  /* find_the_damn_issue_sky130.vhd:10679:85  */
+  assign n887_o = n884_o & n886_o;
+  /* find_the_damn_issue_sky130.vhd:10679:114  */
+  assign n888_o = n887_o & n879_o;
+  /* find_the_damn_issue_sky130.vhd:10679:17  */
+  assign n890_o = n888_o ? 1'b1 : n882_o;
   /* find_the_damn_issue_sky130.vhd:10684:88  */
   assign n892_o = s_m_packetlen == s_m_packetlentxlimit;
   /* find_the_damn_issue_sky130.vhd:24:17  */
@@ -19825,7 +19825,7 @@ module usbfunction
   /* find_the_damn_issue_sky130.vhd:10830:268  */
   assign n1452_o = ~n1451_o;
   /* find_the_damn_issue_sky130.vhd:10830:352  */
-  assign n1455_o = n839_o == 2'b01;
+  assign n1455_o = n855_o == 2'b01;
   /* find_the_damn_issue_sky130.vhd:24:17  */
   assign n1462_o = n1455_o ? 1'b1 : 1'b0;
   /* find_the_damn_issue_sky130.vhd:10830:389  */
@@ -20347,7 +20347,7 @@ module usbfunction
   /* find_the_damn_issue_sky130.vhd:11011:24  */
   assign n1845_o = ~s_m_phy_rx_error_2;
   /* find_the_damn_issue_sky130.vhd:11011:77  */
-  assign n1847_o = n839_o == 2'b11;
+  assign n1847_o = n855_o == 2'b11;
   /* find_the_damn_issue_sky130.vhd:11011:54  */
   assign n1848_o = n1845_o & n1847_o;
   /* find_the_damn_issue_sky130.vhd:11011:86  */
@@ -21417,6 +21417,7 @@ module tt_um_find_the_damn_issue
    input  rst_n,
    input  [7:0] uio_in,
    input  [7:0] ui_in,
+   input  ena,
    output [7:0] uio_out,
    output [7:0] uio_oe,
    output [7:0] uo_out);
@@ -21813,312 +21814,312 @@ module tt_um_find_the_damn_issue
   assign uio_out = n242_o;
   assign uio_oe = n213_o;
   assign uo_out = n185_o;
-  /* find_the_damn_issue_sky130.vhd:11396:16  */
-  assign s_m_status_linestate_2 = s_m_status_linestate; // (signal)
   /* find_the_damn_issue_sky130.vhd:11397:16  */
-  assign s_m_status_rxactive_2 = s_m_status_rxactive; // (signal)
+  assign s_m_status_linestate_2 = s_m_status_linestate; // (signal)
   /* find_the_damn_issue_sky130.vhd:11398:16  */
-  assign s_unnamed_or_in_valid_mux1_delayed1_not_mux1 = s_m_phy_tx_ready; // (signal)
+  assign s_m_status_rxactive_2 = s_m_status_rxactive; // (signal)
   /* find_the_damn_issue_sky130.vhd:11399:16  */
-  assign s_m_phy_tx_valid_3 = s_m_phy_tx_valid_2; // (signal)
+  assign s_unnamed_or_in_valid_mux1_delayed1_not_mux1 = s_m_phy_tx_ready; // (signal)
   /* find_the_damn_issue_sky130.vhd:11400:16  */
-  assign s_m_phy_tx_data_3 = s_m_phy_tx_data_2; // (signal)
+  assign s_m_phy_tx_valid_3 = s_m_phy_tx_valid_2; // (signal)
   /* find_the_damn_issue_sky130.vhd:11401:16  */
-  assign s_in_valid_and_unnamed_mux2 = s_in_valid_and_unnamed_mux2_2; // (signal)
+  assign s_m_phy_tx_data_3 = s_m_phy_tx_data_2; // (signal)
   /* find_the_damn_issue_sky130.vhd:11402:16  */
-  assign s_in_mux1 = s_in_mux1_2; // (signal)
+  assign s_in_valid_and_unnamed_mux2 = s_in_valid_and_unnamed_mux2_2; // (signal)
   /* find_the_damn_issue_sky130.vhd:11403:16  */
-  assign s_m_out_2 = s_m_out; // (signal)
+  assign s_in_mux1 = s_in_mux1_2; // (signal)
   /* find_the_damn_issue_sky130.vhd:11404:16  */
-  assign s_m_match_delayed1 = s_m_match_delayed1_2; // (signal)
+  assign s_m_out_2 = s_m_out; // (signal)
   /* find_the_damn_issue_sky130.vhd:11405:16  */
-  assign s_firstdatabit_mux1 = s_firstdatabit_mux1_2; // (signal)
+  assign s_m_match_delayed1 = s_m_match_delayed1_2; // (signal)
   /* find_the_damn_issue_sky130.vhd:11406:16  */
-  assign s_unnamed_mux1 = s_unnamed_mux1_4; // (signal)
+  assign s_firstdatabit_mux1 = s_firstdatabit_mux1_2; // (signal)
   /* find_the_damn_issue_sky130.vhd:11407:16  */
-  assign s_unnamed_mux1_2 = s_unnamed_mux1_3; // (signal)
+  assign s_unnamed_mux1 = s_unnamed_mux1_4; // (signal)
   /* find_the_damn_issue_sky130.vhd:11408:16  */
-  assign s_m_phy_tx_valid_2 = usbfunction0_out_m_phy_tx_valid_2; // (signal)
+  assign s_unnamed_mux1_2 = s_unnamed_mux1_3; // (signal)
   /* find_the_damn_issue_sky130.vhd:11409:16  */
-  assign s_m_phy_tx_data_2 = usbfunction0_out_m_phy_tx_data_2; // (signal)
+  assign s_m_phy_tx_valid_2 = usbfunction0_out_m_phy_tx_valid_2; // (signal)
   /* find_the_damn_issue_sky130.vhd:11410:16  */
-  assign s_unnamed_mux2 = s_unnamed_mux2_2; // (signal)
+  assign s_m_phy_tx_data_2 = usbfunction0_out_m_phy_tx_data_2; // (signal)
   /* find_the_damn_issue_sky130.vhd:11411:16  */
+  assign s_unnamed_mux2 = s_unnamed_mux2_2; // (signal)
+  /* find_the_damn_issue_sky130.vhd:11412:16  */
   always @*
     s_operatingmode = n346_q; // (isignal)
   initial
     s_operatingmode = 1'b0;
-  /* find_the_damn_issue_sky130.vhd:11412:16  */
-  assign s_uio_in_2 = uio_in; // (signal)
   /* find_the_damn_issue_sky130.vhd:11413:16  */
-  assign s_unnamed = 8'bX; // (signal)
+  assign s_uio_in_2 = uio_in; // (signal)
   /* find_the_damn_issue_sky130.vhd:11414:16  */
-  assign s_unnamed_2 = 8'bX; // (signal)
+  assign s_unnamed = 8'bX; // (signal)
   /* find_the_damn_issue_sky130.vhd:11415:16  */
-  assign s_operatingmode_2 = s_operatingmode; // (signal)
+  assign s_unnamed_2 = 8'bX; // (signal)
   /* find_the_damn_issue_sky130.vhd:11416:16  */
-  assign s_set_line_coding_mux1 = s_set_line_coding_mux1_2; // (signal)
+  assign s_operatingmode_2 = s_operatingmode; // (signal)
   /* find_the_damn_issue_sky130.vhd:11417:16  */
+  assign s_set_line_coding_mux1 = s_set_line_coding_mux1_2; // (signal)
+  /* find_the_damn_issue_sky130.vhd:11418:16  */
   always @*
     s_unnamed_3 = n347_q; // (isignal)
   initial
     s_unnamed_3 = 1'b0;
-  /* find_the_damn_issue_sky130.vhd:11418:16  */
+  /* find_the_damn_issue_sky130.vhd:11419:16  */
   always @*
     s_dtr = n349_q; // (isignal)
   initial
     s_dtr = 1'b0;
-  /* find_the_damn_issue_sky130.vhd:11419:16  */
-  assign s_dtr_2 = s_dtr; // (signal)
   /* find_the_damn_issue_sky130.vhd:11420:16  */
+  assign s_dtr_2 = s_dtr; // (signal)
+  /* find_the_damn_issue_sky130.vhd:11421:16  */
   always @*
     s_rts = n351_q; // (isignal)
   initial
     s_rts = 1'b0;
-  /* find_the_damn_issue_sky130.vhd:11421:16  */
-  assign s_rts_2 = s_rts; // (signal)
   /* find_the_damn_issue_sky130.vhd:11422:16  */
+  assign s_rts_2 = s_rts; // (signal)
+  /* find_the_damn_issue_sky130.vhd:11423:16  */
   always @*
     s_baudrate = n353_q; // (isignal)
   initial
     s_baudrate = 24'b000000011100001000000000;
-  /* find_the_damn_issue_sky130.vhd:11423:16  */
-  assign s_baudrate_2 = s_baudrate; // (signal)
   /* find_the_damn_issue_sky130.vhd:11424:16  */
-  assign s_m_status_linestate = usbfunction0_out_m_status_linestate; // (signal)
+  assign s_baudrate_2 = s_baudrate; // (signal)
   /* find_the_damn_issue_sky130.vhd:11425:16  */
-  assign s_m_status_rxactive = usbfunction0_out_m_status_rxactive; // (signal)
+  assign s_m_status_linestate = usbfunction0_out_m_status_linestate; // (signal)
   /* find_the_damn_issue_sky130.vhd:11426:16  */
-  assign s_m_out = usbfunction0_out_m_out; // (signal)
+  assign s_m_status_rxactive = usbfunction0_out_m_status_rxactive; // (signal)
   /* find_the_damn_issue_sky130.vhd:11427:16  */
-  assign s_m_match_delayed1_2 = usbfunction0_out_m_match_delayed1; // (signal)
+  assign s_m_out = usbfunction0_out_m_out; // (signal)
   /* find_the_damn_issue_sky130.vhd:11428:16  */
-  assign s_m_phy_tx_ready = usbfunction0_out_m_phy_tx_ready; // (signal)
+  assign s_m_match_delayed1_2 = usbfunction0_out_m_match_delayed1; // (signal)
   /* find_the_damn_issue_sky130.vhd:11429:16  */
-  assign s_unnamed_mux1_3 = usbfunction0_out_unnamed_mux1; // (signal)
+  assign s_m_phy_tx_ready = usbfunction0_out_m_phy_tx_ready; // (signal)
   /* find_the_damn_issue_sky130.vhd:11430:16  */
-  assign s_in_mux1_2 = usbfunction0_out_unnamed_mux1_2; // (signal)
+  assign s_unnamed_mux1_3 = usbfunction0_out_unnamed_mux1; // (signal)
   /* find_the_damn_issue_sky130.vhd:11431:16  */
-  assign s_firstdatabit_mux1_2 = usbfunction0_out_firstdatabit_mux2; // (signal)
+  assign s_in_mux1_2 = usbfunction0_out_unnamed_mux1_2; // (signal)
   /* find_the_damn_issue_sky130.vhd:11432:16  */
-  assign s_in_valid_and_unnamed_mux2_2 = usbfunction0_out_in_valid_and_unnamed_mux2; // (signal)
+  assign s_firstdatabit_mux1_2 = usbfunction0_out_firstdatabit_mux2; // (signal)
   /* find_the_damn_issue_sky130.vhd:11433:16  */
-  assign s_unnamed_mux1_4 = usbfunction0_out_unnamed_mux1_3; // (signal)
+  assign s_in_valid_and_unnamed_mux2_2 = usbfunction0_out_in_valid_and_unnamed_mux2; // (signal)
   /* find_the_damn_issue_sky130.vhd:11434:16  */
-  assign s_set_line_coding_mux1_2 = usbfunction0_out_set_line_coding_mux1; // (signal)
+  assign s_unnamed_mux1_4 = usbfunction0_out_unnamed_mux1_3; // (signal)
   /* find_the_damn_issue_sky130.vhd:11435:16  */
-  assign s_unnamed_4 = usbfunction0_out_unnamed_32; // (signal)
+  assign s_set_line_coding_mux1_2 = usbfunction0_out_set_line_coding_mux1; // (signal)
   /* find_the_damn_issue_sky130.vhd:11436:16  */
-  assign s_unnamed_eq_set_line_coding_and_m_phy_rx_error_not_and_m_pid_2_rewired_eq_const_11_and_nested_condition_m_phy_rx_eop = usbfunction0_out_unnamed_eq_set_line_coding_and_m_phy_rx_error_not_and_m_pid_2_rewired_eq_const_11_and_nested_condition_m_phy_rx_eop; // (signal)
+  assign s_unnamed_4 = usbfunction0_out_unnamed_32; // (signal)
   /* find_the_damn_issue_sky130.vhd:11437:16  */
-  assign s_baudrate_3 = usbfunction0_out_m_packetdata_2_rewired_mux1; // (signal)
+  assign s_unnamed_eq_set_line_coding_and_m_phy_rx_error_not_and_m_pid_2_rewired_eq_const_11_and_nested_condition_m_phy_rx_eop = usbfunction0_out_unnamed_eq_set_line_coding_and_m_phy_rx_error_not_and_m_pid_2_rewired_eq_const_11_and_nested_condition_m_phy_rx_eop; // (signal)
   /* find_the_damn_issue_sky130.vhd:11438:16  */
-  assign s_unnamed_mux2_2 = usbfunction0_out_unnamed_mux2; // (signal)
+  assign s_baudrate_3 = usbfunction0_out_m_packetdata_2_rewired_mux1; // (signal)
   /* find_the_damn_issue_sky130.vhd:11439:16  */
-  assign s_unnamed_5 = 1'b0; // (signal)
+  assign s_unnamed_mux2_2 = usbfunction0_out_unnamed_mux2; // (signal)
   /* find_the_damn_issue_sky130.vhd:11440:16  */
-  assign s_unnamed_6 = n253_o; // (signal)
+  assign s_unnamed_5 = 1'b0; // (signal)
   /* find_the_damn_issue_sky130.vhd:11441:16  */
-  assign s_unnamed_7 = n255_o; // (signal)
+  assign s_unnamed_6 = n253_o; // (signal)
   /* find_the_damn_issue_sky130.vhd:11442:16  */
-  assign s_m_peekdata_data = scl_fifo0_out_m_peekdata_data; // (signal)
+  assign s_unnamed_7 = n255_o; // (signal)
   /* find_the_damn_issue_sky130.vhd:11443:16  */
-  assign s_unnamed_8 = 1'b0; // (signal)
+  assign s_m_peekdata_data = scl_fifo0_out_m_peekdata_data; // (signal)
   /* find_the_damn_issue_sky130.vhd:11444:16  */
-  assign s_unnamed_9 = 5'b00000; // (signal)
+  assign s_unnamed_8 = 1'b0; // (signal)
   /* find_the_damn_issue_sky130.vhd:11445:16  */
-  assign s_m_pushvalid = usbfunction0_out_unnamed_not_mux1; // (signal)
+  assign s_unnamed_9 = 5'b00000; // (signal)
   /* find_the_damn_issue_sky130.vhd:11446:16  */
-  assign s_m_pushdata_data = usbfunction0_out_unnamed_mux1_4; // (signal)
+  assign s_m_pushvalid = usbfunction0_out_unnamed_not_mux1; // (signal)
   /* find_the_damn_issue_sky130.vhd:11447:16  */
-  assign s_m_pushdata_endpoint = usbfunction0_out_unnamed_mux1_5; // (signal)
+  assign s_m_pushdata_data = usbfunction0_out_unnamed_mux1_4; // (signal)
   /* find_the_damn_issue_sky130.vhd:11448:16  */
-  assign s_m_pushcommit = usbfunction0_out_const_0_mux1; // (signal)
+  assign s_m_pushdata_endpoint = usbfunction0_out_unnamed_mux1_5; // (signal)
   /* find_the_damn_issue_sky130.vhd:11449:16  */
-  assign s_m_pushrollack = usbfunction0_out_unnamed_mux2_2; // (signal)
+  assign s_m_pushcommit = usbfunction0_out_const_0_mux1; // (signal)
   /* find_the_damn_issue_sky130.vhd:11450:16  */
-  assign s_m_pushcutoff = usbfunction0_out_const_10_mux1; // (signal)
+  assign s_m_pushrollack = usbfunction0_out_unnamed_mux2_2; // (signal)
   /* find_the_damn_issue_sky130.vhd:11451:16  */
-  assign s_m_popvalid = n96_o; // (signal)
+  assign s_m_pushcutoff = usbfunction0_out_const_10_mux1; // (signal)
   /* find_the_damn_issue_sky130.vhd:11452:16  */
-  assign s_m_pushfull = scl_fifo0_out_m_pushfull; // (signal)
+  assign s_m_popvalid = n96_o; // (signal)
   /* find_the_damn_issue_sky130.vhd:11453:16  */
-  assign s_m_popempty = scl_fifo0_out_m_popempty; // (signal)
+  assign s_m_pushfull = scl_fifo0_out_m_pushfull; // (signal)
   /* find_the_damn_issue_sky130.vhd:11454:16  */
-  assign s_usbep1_rx_valid = n97_o; // (signal)
+  assign s_m_popempty = scl_fifo0_out_m_popempty; // (signal)
   /* find_the_damn_issue_sky130.vhd:11455:16  */
-  assign s_usbep1_rx = s_m_peekdata_data; // (signal)
+  assign s_usbep1_rx_valid = n97_o; // (signal)
   /* find_the_damn_issue_sky130.vhd:11456:16  */
-  assign s_m_selector = s_operatingmode_2; // (signal)
+  assign s_usbep1_rx = s_m_peekdata_data; // (signal)
   /* find_the_damn_issue_sky130.vhd:11457:16  */
-  assign s_out_0_ready = scl_streamdemux0_out_out_0_ready; // (signal)
+  assign s_m_selector = s_operatingmode_2; // (signal)
   /* find_the_damn_issue_sky130.vhd:11458:16  */
-  assign s_out_0_valid = scl_streamdemux0_out_out_0_valid; // (signal)
+  assign s_out_0_ready = scl_streamdemux0_out_out_0_ready; // (signal)
   /* find_the_damn_issue_sky130.vhd:11459:16  */
-  assign s_out_0 = scl_streamdemux0_out_out_0; // (signal)
+  assign s_out_0_valid = scl_streamdemux0_out_out_0_valid; // (signal)
   /* find_the_damn_issue_sky130.vhd:11460:16  */
-  assign s_unnamed_10 = scl_uarttx0_out_baud_and_m_last; // (signal)
+  assign s_out_0 = scl_streamdemux0_out_out_0; // (signal)
   /* find_the_damn_issue_sky130.vhd:11461:16  */
-  assign s_out = scl_uarttx0_out_out; // (signal)
+  assign s_unnamed_10 = scl_uarttx0_out_baud_and_m_last; // (signal)
   /* find_the_damn_issue_sky130.vhd:11462:16  */
-  assign s_usbep1_rx_ready = scl_streamdemux0_out_m_in_ready_mux2; // (signal)
+  assign s_out = scl_uarttx0_out_out; // (signal)
   /* find_the_damn_issue_sky130.vhd:11463:16  */
-  assign s_out_1_ready = scl_streamdemux0_out_out_1_ready; // (signal)
+  assign s_usbep1_rx_ready = scl_streamdemux0_out_m_in_ready_mux2; // (signal)
   /* find_the_damn_issue_sky130.vhd:11464:16  */
-  assign s_out_1_valid = scl_streamdemux0_out_out_1_valid; // (signal)
+  assign s_out_1_ready = scl_streamdemux0_out_out_1_ready; // (signal)
   /* find_the_damn_issue_sky130.vhd:11465:16  */
-  assign s_out_1 = scl_streamdemux0_out_out_1; // (signal)
+  assign s_out_1_valid = scl_streamdemux0_out_out_1_valid; // (signal)
   /* find_the_damn_issue_sky130.vhd:11466:16  */
-  assign s_unnamed_11 = scl_bitbangengine0_out_const_0_mux13; // (signal)
+  assign s_out_1 = scl_streamdemux0_out_out_1; // (signal)
   /* find_the_damn_issue_sky130.vhd:11467:16  */
-  assign s_m_io0_out = scl_bitbangengine0_out_m_io0_out; // (signal)
+  assign s_unnamed_11 = scl_bitbangengine0_out_const_0_mux13; // (signal)
   /* find_the_damn_issue_sky130.vhd:11468:16  */
-  assign s_m_io0_en = scl_bitbangengine0_out_m_io0_en; // (signal)
+  assign s_m_io0_out = scl_bitbangengine0_out_m_io0_out; // (signal)
   /* find_the_damn_issue_sky130.vhd:11469:16  */
-  assign s_m_io0_opendrain = scl_bitbangengine0_out_m_io0_opendrain; // (signal)
+  assign s_m_io0_en = scl_bitbangengine0_out_m_io0_en; // (signal)
   /* find_the_damn_issue_sky130.vhd:11470:16  */
-  assign s_m_io1_out = scl_bitbangengine0_out_m_io1_out; // (signal)
+  assign s_m_io0_opendrain = scl_bitbangengine0_out_m_io0_opendrain; // (signal)
   /* find_the_damn_issue_sky130.vhd:11471:16  */
-  assign s_m_io1_en = scl_bitbangengine0_out_m_io1_en; // (signal)
+  assign s_m_io1_out = scl_bitbangengine0_out_m_io1_out; // (signal)
   /* find_the_damn_issue_sky130.vhd:11472:16  */
-  assign s_m_io1_opendrain = scl_bitbangengine0_out_m_io1_opendrain; // (signal)
+  assign s_m_io1_en = scl_bitbangengine0_out_m_io1_en; // (signal)
   /* find_the_damn_issue_sky130.vhd:11473:16  */
-  assign s_m_io2_out = scl_bitbangengine0_out_m_io2_out; // (signal)
+  assign s_m_io1_opendrain = scl_bitbangengine0_out_m_io1_opendrain; // (signal)
   /* find_the_damn_issue_sky130.vhd:11474:16  */
-  assign s_m_io2_en = scl_bitbangengine0_out_m_io2_en; // (signal)
+  assign s_m_io2_out = scl_bitbangengine0_out_m_io2_out; // (signal)
   /* find_the_damn_issue_sky130.vhd:11475:16  */
-  assign s_m_io2_opendrain = scl_bitbangengine0_out_m_io2_opendrain; // (signal)
+  assign s_m_io2_en = scl_bitbangengine0_out_m_io2_en; // (signal)
   /* find_the_damn_issue_sky130.vhd:11476:16  */
-  assign s_m_io3_out = scl_bitbangengine0_out_m_io3_out; // (signal)
+  assign s_m_io2_opendrain = scl_bitbangengine0_out_m_io2_opendrain; // (signal)
   /* find_the_damn_issue_sky130.vhd:11477:16  */
-  assign s_m_io3_en = scl_bitbangengine0_out_m_io3_en; // (signal)
+  assign s_m_io3_out = scl_bitbangengine0_out_m_io3_out; // (signal)
   /* find_the_damn_issue_sky130.vhd:11478:16  */
-  assign s_m_io3_opendrain = scl_bitbangengine0_out_m_io3_opendrain; // (signal)
+  assign s_m_io3_en = scl_bitbangengine0_out_m_io3_en; // (signal)
   /* find_the_damn_issue_sky130.vhd:11479:16  */
-  assign s_m_io4_out = scl_bitbangengine0_out_m_io4_out; // (signal)
+  assign s_m_io3_opendrain = scl_bitbangengine0_out_m_io3_opendrain; // (signal)
   /* find_the_damn_issue_sky130.vhd:11480:16  */
-  assign s_m_io4_en = scl_bitbangengine0_out_m_io4_en; // (signal)
+  assign s_m_io4_out = scl_bitbangengine0_out_m_io4_out; // (signal)
   /* find_the_damn_issue_sky130.vhd:11481:16  */
-  assign s_m_io4_opendrain = scl_bitbangengine0_out_m_io4_opendrain; // (signal)
+  assign s_m_io4_en = scl_bitbangengine0_out_m_io4_en; // (signal)
   /* find_the_damn_issue_sky130.vhd:11482:16  */
-  assign s_m_io5_out = scl_bitbangengine0_out_m_io5_out; // (signal)
+  assign s_m_io4_opendrain = scl_bitbangengine0_out_m_io4_opendrain; // (signal)
   /* find_the_damn_issue_sky130.vhd:11483:16  */
-  assign s_m_io5_en = scl_bitbangengine0_out_m_io5_en; // (signal)
+  assign s_m_io5_out = scl_bitbangengine0_out_m_io5_out; // (signal)
   /* find_the_damn_issue_sky130.vhd:11484:16  */
-  assign s_m_io5_opendrain = scl_bitbangengine0_out_m_io5_opendrain; // (signal)
+  assign s_m_io5_en = scl_bitbangengine0_out_m_io5_en; // (signal)
   /* find_the_damn_issue_sky130.vhd:11485:16  */
-  assign s_m_io8_out = scl_bitbangengine0_out_m_io8_out; // (signal)
+  assign s_m_io5_opendrain = scl_bitbangengine0_out_m_io5_opendrain; // (signal)
   /* find_the_damn_issue_sky130.vhd:11486:16  */
-  assign s_m_io9_out = scl_bitbangengine0_out_m_io9_out; // (signal)
+  assign s_m_io8_out = scl_bitbangengine0_out_m_io8_out; // (signal)
   /* find_the_damn_issue_sky130.vhd:11487:16  */
-  assign s_m_io10_out = scl_bitbangengine0_out_m_io10_out; // (signal)
+  assign s_m_io9_out = scl_bitbangengine0_out_m_io9_out; // (signal)
   /* find_the_damn_issue_sky130.vhd:11488:16  */
-  assign s_m_io11_out = scl_bitbangengine0_out_m_io11_out; // (signal)
+  assign s_m_io10_out = scl_bitbangengine0_out_m_io10_out; // (signal)
   /* find_the_damn_issue_sky130.vhd:11489:16  */
-  assign s_m_io12_out = scl_bitbangengine0_out_m_io12_out; // (signal)
+  assign s_m_io11_out = scl_bitbangengine0_out_m_io11_out; // (signal)
   /* find_the_damn_issue_sky130.vhd:11490:16  */
-  assign s_m_io13_out = scl_bitbangengine0_out_m_io13_out; // (signal)
+  assign s_m_io12_out = scl_bitbangengine0_out_m_io12_out; // (signal)
   /* find_the_damn_issue_sky130.vhd:11491:16  */
-  assign s_m_io14_out = scl_bitbangengine0_out_m_io14_out; // (signal)
+  assign s_m_io13_out = scl_bitbangengine0_out_m_io13_out; // (signal)
   /* find_the_damn_issue_sky130.vhd:11492:16  */
+  assign s_m_io14_out = scl_bitbangengine0_out_m_io14_out; // (signal)
+  /* find_the_damn_issue_sky130.vhd:11493:16  */
   assign s_m_io15_out = scl_bitbangengine0_out_m_io15_out; // (signal)
-  /* find_the_damn_issue_sky130.vhd:11494:16  */
-  assign s_out_valid = scl_bitbangengine0_out_out_valid; // (signal)
   /* find_the_damn_issue_sky130.vhd:11495:16  */
-  assign s_out_2 = scl_bitbangengine0_out_out; // (signal)
+  assign s_out_valid = scl_bitbangengine0_out_out_valid; // (signal)
   /* find_the_damn_issue_sky130.vhd:11496:16  */
-  assign s_bitbangout_valid = s_out_valid; // (signal)
+  assign s_out_2 = scl_bitbangengine0_out_out; // (signal)
   /* find_the_damn_issue_sky130.vhd:11497:16  */
-  assign s_bitbangout = s_out_2; // (signal)
+  assign s_bitbangout_valid = s_out_valid; // (signal)
   /* find_the_damn_issue_sky130.vhd:11498:16  */
-  assign s_rx = n98_o; // (signal)
+  assign s_bitbangout = s_out_2; // (signal)
   /* find_the_damn_issue_sky130.vhd:11499:16  */
-  assign s_out_valid_2 = scl_uartrx0_out_out_valid; // (signal)
+  assign s_rx = n98_o; // (signal)
   /* find_the_damn_issue_sky130.vhd:11500:16  */
-  assign s_out_3 = scl_uartrx0_out_out; // (signal)
+  assign s_out_valid_2 = scl_uartrx0_out_out_valid; // (signal)
   /* find_the_damn_issue_sky130.vhd:11501:16  */
-  assign s_uartout_valid = s_out_valid_2; // (signal)
+  assign s_out_3 = scl_uartrx0_out_out; // (signal)
   /* find_the_damn_issue_sky130.vhd:11502:16  */
-  assign s_uartout = s_out_3; // (signal)
+  assign s_uartout_valid = s_out_valid_2; // (signal)
   /* find_the_damn_issue_sky130.vhd:11503:16  */
-  assign s_unnamed_12 = scl_streamarbiter_2_out_const_0_mux1; // (signal)
+  assign s_uartout = s_out_3; // (signal)
   /* find_the_damn_issue_sky130.vhd:11504:16  */
-  assign s_m_out_valid = scl_streamarbiter_2_out_m_out_valid; // (signal)
+  assign s_unnamed_12 = scl_streamarbiter_2_out_const_0_mux1; // (signal)
   /* find_the_damn_issue_sky130.vhd:11505:16  */
-  assign s_m_out_3 = scl_streamarbiter_2_out_m_out; // (signal)
+  assign s_m_out_valid = scl_streamarbiter_2_out_m_out_valid; // (signal)
   /* find_the_damn_issue_sky130.vhd:11506:16  */
-  assign s_unnamed_13 = 1'b0; // (signal)
+  assign s_m_out_3 = scl_streamarbiter_2_out_m_out; // (signal)
   /* find_the_damn_issue_sky130.vhd:11507:16  */
-  assign s_m_peekdata_data_2 = scl_fifo1_out_m_peekdata_data; // (signal)
+  assign s_unnamed_13 = 1'b0; // (signal)
   /* find_the_damn_issue_sky130.vhd:11508:16  */
-  assign s_m_peekdata_endpoint = scl_fifo1_out_m_peekdata_endpoint; // (signal)
+  assign s_m_peekdata_data_2 = scl_fifo1_out_m_peekdata_data; // (signal)
   /* find_the_damn_issue_sky130.vhd:11509:16  */
-  assign s_unnamed_14 = 1'b0; // (signal)
+  assign s_m_peekdata_endpoint = scl_fifo1_out_m_peekdata_endpoint; // (signal)
   /* find_the_damn_issue_sky130.vhd:11510:16  */
-  assign s_m_pushcutoff_2 = 5'b00000; // (signal)
+  assign s_unnamed_14 = 1'b0; // (signal)
   /* find_the_damn_issue_sky130.vhd:11511:16  */
-  assign s_m_popvalid_2 = usbfunction0_out_unnamed_not_mux1_2; // (signal)
+  assign s_m_pushcutoff_2 = 5'b00000; // (signal)
   /* find_the_damn_issue_sky130.vhd:11512:16  */
-  assign s_m_popcommit = usbfunction0_out_unnamed_mux2_3; // (signal)
+  assign s_m_popvalid_2 = usbfunction0_out_unnamed_not_mux1_2; // (signal)
   /* find_the_damn_issue_sky130.vhd:11513:16  */
-  assign s_m_poprollback = usbfunction0_out_const_0_mux1_2; // (signal)
+  assign s_m_popcommit = usbfunction0_out_unnamed_mux2_3; // (signal)
   /* find_the_damn_issue_sky130.vhd:11514:16  */
-  assign s_m_out_ready = n99_o; // (signal)
+  assign s_m_poprollback = usbfunction0_out_const_0_mux1_2; // (signal)
   /* find_the_damn_issue_sky130.vhd:11515:16  */
-  assign s_m_pushvalid_2 = n103_o; // (signal)
+  assign s_m_out_ready = n99_o; // (signal)
   /* find_the_damn_issue_sky130.vhd:11516:16  */
-  assign s_m_pushdata_data_2 = n246_o; // (signal)
+  assign s_m_pushvalid_2 = n103_o; // (signal)
   /* find_the_damn_issue_sky130.vhd:11517:16  */
-  assign s_m_pushdata_endpoint_2 = n251_o; // (signal)
+  assign s_m_pushdata_data_2 = n246_o; // (signal)
   /* find_the_damn_issue_sky130.vhd:11518:16  */
-  assign s_m_pushfull_2 = scl_fifo1_out_m_pushfull; // (signal)
+  assign s_m_pushdata_endpoint_2 = n251_o; // (signal)
   /* find_the_damn_issue_sky130.vhd:11519:16  */
-  assign s_m_popempty_2 = scl_fifo1_out_m_popempty; // (signal)
+  assign s_m_pushfull_2 = scl_fifo1_out_m_pushfull; // (signal)
   /* find_the_damn_issue_sky130.vhd:11520:16  */
-  assign s_unnamed_15 = n104_o; // (signal)
+  assign s_m_popempty_2 = scl_fifo1_out_m_popempty; // (signal)
   /* find_the_damn_issue_sky130.vhd:11521:16  */
-  assign s_unnamed_16 = n110_o; // (signal)
+  assign s_unnamed_15 = n104_o; // (signal)
   /* find_the_damn_issue_sky130.vhd:11522:16  */
-  assign s_unnamed_17 = n116_o; // (signal)
+  assign s_unnamed_16 = n110_o; // (signal)
   /* find_the_damn_issue_sky130.vhd:11523:16  */
-  assign s_unnamed_18 = n122_o; // (signal)
+  assign s_unnamed_17 = n116_o; // (signal)
   /* find_the_damn_issue_sky130.vhd:11524:16  */
-  assign s_unnamed_19 = n128_o; // (signal)
+  assign s_unnamed_18 = n122_o; // (signal)
   /* find_the_damn_issue_sky130.vhd:11525:16  */
-  assign s_unnamed_20 = n134_o; // (signal)
+  assign s_unnamed_19 = n128_o; // (signal)
   /* find_the_damn_issue_sky130.vhd:11526:16  */
-  assign s_unnamed_21 = n140_o; // (signal)
+  assign s_unnamed_20 = n134_o; // (signal)
   /* find_the_damn_issue_sky130.vhd:11527:16  */
-  assign s_unnamed_22 = n141_o; // (signal)
+  assign s_unnamed_21 = n140_o; // (signal)
   /* find_the_damn_issue_sky130.vhd:11528:16  */
-  assign s_unnamed_23 = n142_o; // (signal)
+  assign s_unnamed_22 = n141_o; // (signal)
   /* find_the_damn_issue_sky130.vhd:11529:16  */
-  assign s_unnamed_24 = n143_o; // (signal)
+  assign s_unnamed_23 = n142_o; // (signal)
   /* find_the_damn_issue_sky130.vhd:11530:16  */
-  assign s_unnamed_25 = n144_o; // (signal)
+  assign s_unnamed_24 = n143_o; // (signal)
   /* find_the_damn_issue_sky130.vhd:11531:16  */
-  assign s_unnamed_26 = n145_o; // (signal)
+  assign s_unnamed_25 = n144_o; // (signal)
   /* find_the_damn_issue_sky130.vhd:11532:16  */
-  assign s_unnamed_27 = n146_o; // (signal)
+  assign s_unnamed_26 = n145_o; // (signal)
   /* find_the_damn_issue_sky130.vhd:11533:16  */
-  assign s_unnamed_28 = n147_o; // (signal)
+  assign s_unnamed_27 = n146_o; // (signal)
   /* find_the_damn_issue_sky130.vhd:11534:16  */
-  assign s_m_packetdata_2_bit_16 = usbfunction0_out_m_packetdata_2_bit_16; // (signal)
+  assign s_unnamed_28 = n147_o; // (signal)
   /* find_the_damn_issue_sky130.vhd:11535:16  */
-  assign s_m_packetdata_2_bit_17 = usbfunction0_out_m_packetdata_2_bit_17; // (signal)
+  assign s_m_packetdata_2_bit_16 = usbfunction0_out_m_packetdata_2_bit_16; // (signal)
   /* find_the_damn_issue_sky130.vhd:11536:16  */
-  assign s_m_packetdata_2_rewired = usbfunction0_out_m_packetdata_2_rewired; // (signal)
+  assign s_m_packetdata_2_bit_17 = usbfunction0_out_m_packetdata_2_bit_17; // (signal)
   /* find_the_damn_issue_sky130.vhd:11537:16  */
-  assign s_unnamed_mux2_3 = usbfunction0_out_unnamed_mux2_4; // (signal)
+  assign s_m_packetdata_2_rewired = usbfunction0_out_m_packetdata_2_rewired; // (signal)
   /* find_the_damn_issue_sky130.vhd:11538:16  */
-  assign s_m_packetdata_2_bit_17_mux1 = usbfunction0_out_m_packetdata_2_bit_17_mux1; // (signal)
+  assign s_unnamed_mux2_3 = usbfunction0_out_unnamed_mux2_4; // (signal)
   /* find_the_damn_issue_sky130.vhd:11539:16  */
-  assign s_m_packetdata_2_bit_16_mux1 = usbfunction0_out_m_packetdata_2_bit_16_mux1; // (signal)
+  assign s_m_packetdata_2_bit_17_mux1 = usbfunction0_out_m_packetdata_2_bit_17_mux1; // (signal)
   /* find_the_damn_issue_sky130.vhd:11540:16  */
-  assign s_unnamed_txstuffedstream_valid_mux2_rewired_txstuffedstream_valid_mux2_rewired = usbfunction0_out_unnamed_txstuffedstream_valid_mux2_rewired_txstuffedstream_valid_mux2_rewired; // (signal)
+  assign s_m_packetdata_2_bit_16_mux1 = usbfunction0_out_m_packetdata_2_bit_16_mux1; // (signal)
   /* find_the_damn_issue_sky130.vhd:11541:16  */
+  assign s_unnamed_txstuffedstream_valid_mux2_rewired_txstuffedstream_valid_mux2_rewired = usbfunction0_out_unnamed_txstuffedstream_valid_mux2_rewired_txstuffedstream_valid_mux2_rewired; // (signal)
+  /* find_the_damn_issue_sky130.vhd:11542:16  */
   assign s_unnamed_txstuffedstream_mux1_rewired_txstuffedstream_not_mux1_rewired = usbfunction0_out_unnamed_txstuffedstream_mux1_rewired_txstuffedstream_not_mux1_rewired; // (signal)
-  /* find_the_damn_issue_sky130.vhd:11543:9  */
+  /* find_the_damn_issue_sky130.vhd:11544:9  */
   usbfunction usbfunction0 (
     .clk(clk),
     .rst_n(rst_n),
@@ -22187,301 +22188,301 @@ module tt_um_find_the_damn_issue
     .out_m_packetdata_2_bit_16_mux1(usbfunction0_out_m_packetdata_2_bit_16_mux1),
     .out_unnamed_txstuffedstream_valid_mux2_rewired_txstuffedstream_valid_mux2_rewired(usbfunction0_out_unnamed_txstuffedstream_valid_mux2_rewired_txstuffedstream_valid_mux2_rewired),
     .out_unnamed_txstuffedstream_mux1_rewired_txstuffedstream_not_mux1_rewired(usbfunction0_out_unnamed_txstuffedstream_mux1_rewired_txstuffedstream_not_mux1_rewired));
-  /* find_the_damn_issue_sky130.vhd:11691:23  */
+  /* find_the_damn_issue_sky130.vhd:11692:23  */
   assign n92_o = ~s_m_popempty;
-  /* find_the_damn_issue_sky130.vhd:11691:47  */
+  /* find_the_damn_issue_sky130.vhd:11692:47  */
   assign n93_o = n92_o & s_usbep1_rx_ready;
-  /* find_the_damn_issue_sky130.vhd:11692:43  */
+  /* find_the_damn_issue_sky130.vhd:11693:43  */
   assign n94_o = ~s_m_popempty;
-  /* find_the_damn_issue_sky130.vhd:11691:17  */
+  /* find_the_damn_issue_sky130.vhd:11692:17  */
   assign n96_o = n93_o ? n94_o : 1'b0;
-  /* find_the_damn_issue_sky130.vhd:11697:40  */
+  /* find_the_damn_issue_sky130.vhd:11698:40  */
   assign n97_o = ~s_m_popempty;
-  /* find_the_damn_issue_sky130.vhd:11704:35  */
+  /* find_the_damn_issue_sky130.vhd:11705:35  */
   assign n98_o = s_uio_in_2[2];
-  /* find_the_damn_issue_sky130.vhd:11710:36  */
+  /* find_the_damn_issue_sky130.vhd:11711:36  */
   assign n99_o = ~s_m_pushfull_2;
-  /* find_the_damn_issue_sky130.vhd:11711:41  */
+  /* find_the_damn_issue_sky130.vhd:11712:41  */
   assign n100_o = s_m_out_valid & s_m_out_ready;
-  /* find_the_damn_issue_sky130.vhd:11712:46  */
+  /* find_the_damn_issue_sky130.vhd:11713:46  */
   assign n101_o = ~s_m_pushfull_2;
-  /* find_the_damn_issue_sky130.vhd:11711:17  */
+  /* find_the_damn_issue_sky130.vhd:11712:17  */
   assign n103_o = n100_o ? n101_o : 1'b0;
-  /* find_the_damn_issue_sky130.vhd:11716:43  */
+  /* find_the_damn_issue_sky130.vhd:11717:43  */
   assign n104_o = s_uio_in_2[0];
-  /* find_the_damn_issue_sky130.vhd:11717:17  */
+  /* find_the_damn_issue_sky130.vhd:11718:17  */
   assign n106_o = s_m_io0_opendrain ? 1'b0 : s_m_io0_out;
-  /* find_the_damn_issue_sky130.vhd:11723:62  */
+  /* find_the_damn_issue_sky130.vhd:11724:62  */
   assign n107_o = ~s_m_io0_out;
-  /* find_the_damn_issue_sky130.vhd:11723:56  */
+  /* find_the_damn_issue_sky130.vhd:11724:56  */
   assign n108_o = s_m_io0_en & n107_o;
-  /* find_the_damn_issue_sky130.vhd:11722:17  */
+  /* find_the_damn_issue_sky130.vhd:11723:17  */
   assign n109_o = s_m_io0_opendrain ? n108_o : s_m_io0_en;
-  /* find_the_damn_issue_sky130.vhd:11727:43  */
+  /* find_the_damn_issue_sky130.vhd:11728:43  */
   assign n110_o = s_uio_in_2[1];
-  /* find_the_damn_issue_sky130.vhd:11728:17  */
+  /* find_the_damn_issue_sky130.vhd:11729:17  */
   assign n112_o = s_m_io1_opendrain ? 1'b0 : s_m_io1_out;
-  /* find_the_damn_issue_sky130.vhd:11734:62  */
+  /* find_the_damn_issue_sky130.vhd:11735:62  */
   assign n113_o = ~s_m_io1_out;
-  /* find_the_damn_issue_sky130.vhd:11734:56  */
+  /* find_the_damn_issue_sky130.vhd:11735:56  */
   assign n114_o = s_m_io1_en & n113_o;
-  /* find_the_damn_issue_sky130.vhd:11733:17  */
+  /* find_the_damn_issue_sky130.vhd:11734:17  */
   assign n115_o = s_m_io1_opendrain ? n114_o : s_m_io1_en;
-  /* find_the_damn_issue_sky130.vhd:11738:43  */
+  /* find_the_damn_issue_sky130.vhd:11739:43  */
   assign n116_o = s_uio_in_2[2];
-  /* find_the_damn_issue_sky130.vhd:11739:17  */
+  /* find_the_damn_issue_sky130.vhd:11740:17  */
   assign n118_o = s_m_io2_opendrain ? 1'b0 : s_m_io2_out;
-  /* find_the_damn_issue_sky130.vhd:11745:62  */
+  /* find_the_damn_issue_sky130.vhd:11746:62  */
   assign n119_o = ~s_m_io2_out;
-  /* find_the_damn_issue_sky130.vhd:11745:56  */
+  /* find_the_damn_issue_sky130.vhd:11746:56  */
   assign n120_o = s_m_io2_en & n119_o;
-  /* find_the_damn_issue_sky130.vhd:11744:17  */
+  /* find_the_damn_issue_sky130.vhd:11745:17  */
   assign n121_o = s_m_io2_opendrain ? n120_o : s_m_io2_en;
-  /* find_the_damn_issue_sky130.vhd:11749:43  */
+  /* find_the_damn_issue_sky130.vhd:11750:43  */
   assign n122_o = s_uio_in_2[3];
-  /* find_the_damn_issue_sky130.vhd:11750:17  */
+  /* find_the_damn_issue_sky130.vhd:11751:17  */
   assign n124_o = s_m_io3_opendrain ? 1'b0 : s_m_io3_out;
-  /* find_the_damn_issue_sky130.vhd:11756:62  */
+  /* find_the_damn_issue_sky130.vhd:11757:62  */
   assign n125_o = ~s_m_io3_out;
-  /* find_the_damn_issue_sky130.vhd:11756:56  */
+  /* find_the_damn_issue_sky130.vhd:11757:56  */
   assign n126_o = s_m_io3_en & n125_o;
-  /* find_the_damn_issue_sky130.vhd:11755:17  */
+  /* find_the_damn_issue_sky130.vhd:11756:17  */
   assign n127_o = s_m_io3_opendrain ? n126_o : s_m_io3_en;
-  /* find_the_damn_issue_sky130.vhd:11760:43  */
+  /* find_the_damn_issue_sky130.vhd:11761:43  */
   assign n128_o = s_uio_in_2[4];
-  /* find_the_damn_issue_sky130.vhd:11761:17  */
+  /* find_the_damn_issue_sky130.vhd:11762:17  */
   assign n130_o = s_m_io4_opendrain ? 1'b0 : s_m_io4_out;
-  /* find_the_damn_issue_sky130.vhd:11767:62  */
+  /* find_the_damn_issue_sky130.vhd:11768:62  */
   assign n131_o = ~s_m_io4_out;
-  /* find_the_damn_issue_sky130.vhd:11767:56  */
+  /* find_the_damn_issue_sky130.vhd:11768:56  */
   assign n132_o = s_m_io4_en & n131_o;
-  /* find_the_damn_issue_sky130.vhd:11766:17  */
+  /* find_the_damn_issue_sky130.vhd:11767:17  */
   assign n133_o = s_m_io4_opendrain ? n132_o : s_m_io4_en;
-  /* find_the_damn_issue_sky130.vhd:11771:43  */
+  /* find_the_damn_issue_sky130.vhd:11772:43  */
   assign n134_o = s_uio_in_2[5];
-  /* find_the_damn_issue_sky130.vhd:11772:17  */
+  /* find_the_damn_issue_sky130.vhd:11773:17  */
   assign n136_o = s_m_io5_opendrain ? 1'b0 : s_m_io5_out;
-  /* find_the_damn_issue_sky130.vhd:11778:62  */
+  /* find_the_damn_issue_sky130.vhd:11779:62  */
   assign n137_o = ~s_m_io5_out;
-  /* find_the_damn_issue_sky130.vhd:11778:56  */
+  /* find_the_damn_issue_sky130.vhd:11779:56  */
   assign n138_o = s_m_io5_en & n137_o;
-  /* find_the_damn_issue_sky130.vhd:11777:17  */
+  /* find_the_damn_issue_sky130.vhd:11778:17  */
   assign n139_o = s_m_io5_opendrain ? n138_o : s_m_io5_en;
-  /* find_the_damn_issue_sky130.vhd:11783:40  */
-  assign n140_o = ui_in[0];
   /* find_the_damn_issue_sky130.vhd:11784:40  */
-  assign n141_o = ui_in[1];
+  assign n140_o = ui_in[0];
   /* find_the_damn_issue_sky130.vhd:11785:40  */
-  assign n142_o = ui_in[2];
+  assign n141_o = ui_in[1];
   /* find_the_damn_issue_sky130.vhd:11786:40  */
-  assign n143_o = ui_in[3];
+  assign n142_o = ui_in[2];
   /* find_the_damn_issue_sky130.vhd:11787:40  */
-  assign n144_o = ui_in[4];
+  assign n143_o = ui_in[3];
   /* find_the_damn_issue_sky130.vhd:11788:40  */
-  assign n145_o = ui_in[5];
+  assign n144_o = ui_in[4];
   /* find_the_damn_issue_sky130.vhd:11789:40  */
-  assign n146_o = ui_in[6];
+  assign n145_o = ui_in[5];
   /* find_the_damn_issue_sky130.vhd:11790:40  */
+  assign n146_o = ui_in[6];
+  /* find_the_damn_issue_sky130.vhd:11791:40  */
   assign n147_o = ui_in[7];
-  /* find_the_damn_issue_sky130.vhd:11792:58  */
+  /* find_the_damn_issue_sky130.vhd:11793:58  */
   assign n149_o = n148_o[7:1];
-  /* find_the_damn_issue_sky130.vhd:11792:71  */
+  /* find_the_damn_issue_sky130.vhd:11793:71  */
   assign n150_o = {n149_o, s_m_io8_out};
-  /* find_the_damn_issue_sky130.vhd:11793:94  */
+  /* find_the_damn_issue_sky130.vhd:11794:94  */
   assign n151_o = n150_o[7:2];
-  /* find_the_damn_issue_sky130.vhd:11793:107  */
+  /* find_the_damn_issue_sky130.vhd:11794:107  */
   assign n152_o = {n151_o, s_m_io9_out};
-  /* find_the_damn_issue_sky130.vhd:11793:150  */
+  /* find_the_damn_issue_sky130.vhd:11794:150  */
   assign n153_o = n150_o[0];
-  /* find_the_damn_issue_sky130.vhd:11793:121  */
+  /* find_the_damn_issue_sky130.vhd:11794:121  */
   assign n154_o = {n152_o, n153_o};
-  /* find_the_damn_issue_sky130.vhd:11794:131  */
+  /* find_the_damn_issue_sky130.vhd:11795:131  */
   assign n155_o = n154_o[7:3];
-  /* find_the_damn_issue_sky130.vhd:11794:144  */
+  /* find_the_damn_issue_sky130.vhd:11795:144  */
   assign n156_o = {n155_o, s_m_io10_out};
-  /* find_the_damn_issue_sky130.vhd:11794:206  */
+  /* find_the_damn_issue_sky130.vhd:11795:206  */
   assign n157_o = n154_o[1:0];
-  /* find_the_damn_issue_sky130.vhd:11794:159  */
+  /* find_the_damn_issue_sky130.vhd:11795:159  */
   assign n158_o = {n156_o, n157_o};
-  /* find_the_damn_issue_sky130.vhd:11795:169  */
+  /* find_the_damn_issue_sky130.vhd:11796:169  */
   assign n159_o = n158_o[7:4];
-  /* find_the_damn_issue_sky130.vhd:11795:182  */
+  /* find_the_damn_issue_sky130.vhd:11796:182  */
   assign n160_o = {n159_o, s_m_io11_out};
-  /* find_the_damn_issue_sky130.vhd:11795:263  */
+  /* find_the_damn_issue_sky130.vhd:11796:263  */
   assign n161_o = n158_o[2:0];
-  /* find_the_damn_issue_sky130.vhd:11795:197  */
+  /* find_the_damn_issue_sky130.vhd:11796:197  */
   assign n162_o = {n160_o, n161_o};
-  /* find_the_damn_issue_sky130.vhd:11796:207  */
+  /* find_the_damn_issue_sky130.vhd:11797:207  */
   assign n163_o = n162_o[7:5];
-  /* find_the_damn_issue_sky130.vhd:11796:220  */
+  /* find_the_damn_issue_sky130.vhd:11797:220  */
   assign n164_o = {n163_o, s_m_io12_out};
-  /* find_the_damn_issue_sky130.vhd:11796:320  */
+  /* find_the_damn_issue_sky130.vhd:11797:320  */
   assign n165_o = n162_o[3:0];
-  /* find_the_damn_issue_sky130.vhd:11796:235  */
+  /* find_the_damn_issue_sky130.vhd:11797:235  */
   assign n166_o = {n164_o, n165_o};
-  /* find_the_damn_issue_sky130.vhd:11797:245  */
+  /* find_the_damn_issue_sky130.vhd:11798:245  */
   assign n167_o = n166_o[7:6];
-  /* find_the_damn_issue_sky130.vhd:11797:258  */
+  /* find_the_damn_issue_sky130.vhd:11798:258  */
   assign n168_o = {n167_o, s_m_io13_out};
-  /* find_the_damn_issue_sky130.vhd:11797:377  */
+  /* find_the_damn_issue_sky130.vhd:11798:377  */
   assign n169_o = n166_o[4:0];
-  /* find_the_damn_issue_sky130.vhd:11797:273  */
+  /* find_the_damn_issue_sky130.vhd:11798:273  */
   assign n170_o = {n168_o, n169_o};
-  /* find_the_damn_issue_sky130.vhd:11798:283  */
+  /* find_the_damn_issue_sky130.vhd:11799:283  */
   assign n171_o = n170_o[7];
-  /* find_the_damn_issue_sky130.vhd:11798:296  */
+  /* find_the_damn_issue_sky130.vhd:11799:296  */
   assign n172_o = {n171_o, s_m_io14_out};
-  /* find_the_damn_issue_sky130.vhd:11798:434  */
+  /* find_the_damn_issue_sky130.vhd:11799:434  */
   assign n173_o = n170_o[5:0];
-  /* find_the_damn_issue_sky130.vhd:11798:311  */
+  /* find_the_damn_issue_sky130.vhd:11799:311  */
   assign n174_o = {n172_o, n173_o};
-  /* find_the_damn_issue_sky130.vhd:11799:336  */
+  /* find_the_damn_issue_sky130.vhd:11800:336  */
   assign n175_o = n174_o[6:0];
-  /* find_the_damn_issue_sky130.vhd:11799:194  */
+  /* find_the_damn_issue_sky130.vhd:11800:194  */
   assign n176_o = {s_m_io15_out, n175_o};
-  /* find_the_damn_issue_sky130.vhd:11801:377  */
+  /* find_the_damn_issue_sky130.vhd:11802:377  */
   assign n177_o = n176_o[7:1];
-  /* find_the_damn_issue_sky130.vhd:11801:390  */
+  /* find_the_damn_issue_sky130.vhd:11802:390  */
   assign n178_o = {n177_o, s_m_packetdata_2_bit_16_mux1};
-  /* find_the_damn_issue_sky130.vhd:11802:39  */
+  /* find_the_damn_issue_sky130.vhd:11803:39  */
   assign n180_o = s_operatingmode_2 == 1'b0;
-  /* find_the_damn_issue_sky130.vhd:11803:238  */
+  /* find_the_damn_issue_sky130.vhd:11804:238  */
   assign n181_o = n178_o[7:2];
-  /* find_the_damn_issue_sky130.vhd:11803:251  */
+  /* find_the_damn_issue_sky130.vhd:11804:251  */
   assign n182_o = {n181_o, s_m_packetdata_2_bit_17_mux1};
-  /* find_the_damn_issue_sky130.vhd:11803:478  */
+  /* find_the_damn_issue_sky130.vhd:11804:478  */
   assign n183_o = n178_o[0];
-  /* find_the_damn_issue_sky130.vhd:11803:282  */
+  /* find_the_damn_issue_sky130.vhd:11804:282  */
   assign n184_o = {n182_o, n183_o};
-  /* find_the_damn_issue_sky130.vhd:11802:17  */
+  /* find_the_damn_issue_sky130.vhd:11803:17  */
   assign n185_o = n180_o ? n184_o : n176_o;
-  /* find_the_damn_issue_sky130.vhd:11808:202  */
+  /* find_the_damn_issue_sky130.vhd:11809:202  */
   assign n186_o = s_unnamed_txstuffedstream_valid_mux2_rewired_txstuffedstream_valid_mux2_rewired[7:1];
-  /* find_the_damn_issue_sky130.vhd:11808:215  */
+  /* find_the_damn_issue_sky130.vhd:11809:215  */
   assign n187_o = {n186_o, n109_o};
-  /* find_the_damn_issue_sky130.vhd:11809:246  */
+  /* find_the_damn_issue_sky130.vhd:11810:246  */
   assign n188_o = n187_o[7:2];
-  /* find_the_damn_issue_sky130.vhd:11809:259  */
+  /* find_the_damn_issue_sky130.vhd:11810:259  */
   assign n189_o = {n188_o, n115_o};
-  /* find_the_damn_issue_sky130.vhd:11809:380  */
+  /* find_the_damn_issue_sky130.vhd:11810:380  */
   assign n190_o = n187_o[0];
-  /* find_the_damn_issue_sky130.vhd:11809:277  */
+  /* find_the_damn_issue_sky130.vhd:11810:277  */
   assign n191_o = {n189_o, n190_o};
-  /* find_the_damn_issue_sky130.vhd:11810:290  */
+  /* find_the_damn_issue_sky130.vhd:11811:290  */
   assign n192_o = n191_o[7:3];
-  /* find_the_damn_issue_sky130.vhd:11810:303  */
+  /* find_the_damn_issue_sky130.vhd:11811:303  */
   assign n193_o = {n192_o, n121_o};
-  /* find_the_damn_issue_sky130.vhd:11810:446  */
+  /* find_the_damn_issue_sky130.vhd:11811:446  */
   assign n194_o = n191_o[1:0];
-  /* find_the_damn_issue_sky130.vhd:11810:321  */
+  /* find_the_damn_issue_sky130.vhd:11811:321  */
   assign n195_o = {n193_o, n194_o};
-  /* find_the_damn_issue_sky130.vhd:11811:334  */
+  /* find_the_damn_issue_sky130.vhd:11812:334  */
   assign n196_o = n195_o[7:4];
-  /* find_the_damn_issue_sky130.vhd:11811:347  */
+  /* find_the_damn_issue_sky130.vhd:11812:347  */
   assign n197_o = {n196_o, n127_o};
-  /* find_the_damn_issue_sky130.vhd:11811:512  */
+  /* find_the_damn_issue_sky130.vhd:11812:512  */
   assign n198_o = n195_o[2:0];
-  /* find_the_damn_issue_sky130.vhd:11811:365  */
+  /* find_the_damn_issue_sky130.vhd:11812:365  */
   assign n199_o = {n197_o, n198_o};
-  /* find_the_damn_issue_sky130.vhd:11812:378  */
+  /* find_the_damn_issue_sky130.vhd:11813:378  */
   assign n200_o = n199_o[7:5];
-  /* find_the_damn_issue_sky130.vhd:11812:391  */
+  /* find_the_damn_issue_sky130.vhd:11813:391  */
   assign n201_o = {n200_o, n133_o};
-  /* find_the_damn_issue_sky130.vhd:11812:578  */
+  /* find_the_damn_issue_sky130.vhd:11813:578  */
   assign n202_o = n199_o[3:0];
-  /* find_the_damn_issue_sky130.vhd:11812:409  */
+  /* find_the_damn_issue_sky130.vhd:11813:409  */
   assign n203_o = {n201_o, n202_o};
-  /* find_the_damn_issue_sky130.vhd:11813:222  */
+  /* find_the_damn_issue_sky130.vhd:11814:222  */
   assign n204_o = n203_o[7:6];
-  /* find_the_damn_issue_sky130.vhd:11813:235  */
+  /* find_the_damn_issue_sky130.vhd:11814:235  */
   assign n205_o = {n204_o, n139_o};
-  /* find_the_damn_issue_sky130.vhd:11813:444  */
+  /* find_the_damn_issue_sky130.vhd:11814:444  */
   assign n206_o = n203_o[4:0];
-  /* find_the_damn_issue_sky130.vhd:11813:253  */
+  /* find_the_damn_issue_sky130.vhd:11814:253  */
   assign n207_o = {n205_o, n206_o};
-  /* find_the_damn_issue_sky130.vhd:11814:39  */
+  /* find_the_damn_issue_sky130.vhd:11815:39  */
   assign n209_o = s_operatingmode_2 == 1'b0;
-  /* find_the_damn_issue_sky130.vhd:11815:49  */
+  /* find_the_damn_issue_sky130.vhd:11816:49  */
   assign n210_o = n207_o[7:6];
-  /* find_the_damn_issue_sky130.vhd:11815:62  */
+  /* find_the_damn_issue_sky130.vhd:11816:62  */
   assign n212_o = {n210_o, 6'b000010};
-  /* find_the_damn_issue_sky130.vhd:11814:17  */
+  /* find_the_damn_issue_sky130.vhd:11815:17  */
   assign n213_o = n209_o ? n212_o : n207_o;
-  /* find_the_damn_issue_sky130.vhd:11821:187  */
+  /* find_the_damn_issue_sky130.vhd:11822:187  */
   assign n214_o = s_unnamed_txstuffedstream_mux1_rewired_txstuffedstream_not_mux1_rewired[7:1];
-  /* find_the_damn_issue_sky130.vhd:11821:200  */
+  /* find_the_damn_issue_sky130.vhd:11822:200  */
   assign n215_o = {n214_o, n106_o};
-  /* find_the_damn_issue_sky130.vhd:11822:233  */
+  /* find_the_damn_issue_sky130.vhd:11823:233  */
   assign n216_o = n215_o[7:2];
-  /* find_the_damn_issue_sky130.vhd:11822:246  */
+  /* find_the_damn_issue_sky130.vhd:11823:246  */
   assign n217_o = {n216_o, n112_o};
-  /* find_the_damn_issue_sky130.vhd:11822:361  */
+  /* find_the_damn_issue_sky130.vhd:11823:361  */
   assign n218_o = n215_o[0];
-  /* find_the_damn_issue_sky130.vhd:11822:265  */
+  /* find_the_damn_issue_sky130.vhd:11823:265  */
   assign n219_o = {n217_o, n218_o};
-  /* find_the_damn_issue_sky130.vhd:11823:279  */
+  /* find_the_damn_issue_sky130.vhd:11824:279  */
   assign n220_o = n219_o[7:3];
-  /* find_the_damn_issue_sky130.vhd:11823:292  */
+  /* find_the_damn_issue_sky130.vhd:11824:292  */
   assign n221_o = {n220_o, n118_o};
-  /* find_the_damn_issue_sky130.vhd:11823:430  */
+  /* find_the_damn_issue_sky130.vhd:11824:430  */
   assign n222_o = n219_o[1:0];
-  /* find_the_damn_issue_sky130.vhd:11823:311  */
+  /* find_the_damn_issue_sky130.vhd:11824:311  */
   assign n223_o = {n221_o, n222_o};
-  /* find_the_damn_issue_sky130.vhd:11824:325  */
+  /* find_the_damn_issue_sky130.vhd:11825:325  */
   assign n224_o = n223_o[7:4];
-  /* find_the_damn_issue_sky130.vhd:11824:338  */
+  /* find_the_damn_issue_sky130.vhd:11825:338  */
   assign n225_o = {n224_o, n124_o};
-  /* find_the_damn_issue_sky130.vhd:11824:499  */
+  /* find_the_damn_issue_sky130.vhd:11825:499  */
   assign n226_o = n223_o[2:0];
-  /* find_the_damn_issue_sky130.vhd:11824:357  */
+  /* find_the_damn_issue_sky130.vhd:11825:357  */
   assign n227_o = {n225_o, n226_o};
-  /* find_the_damn_issue_sky130.vhd:11825:371  */
+  /* find_the_damn_issue_sky130.vhd:11826:371  */
   assign n228_o = n227_o[7:5];
-  /* find_the_damn_issue_sky130.vhd:11825:384  */
+  /* find_the_damn_issue_sky130.vhd:11826:384  */
   assign n229_o = {n228_o, n130_o};
-  /* find_the_damn_issue_sky130.vhd:11825:568  */
+  /* find_the_damn_issue_sky130.vhd:11826:568  */
   assign n230_o = n227_o[3:0];
-  /* find_the_damn_issue_sky130.vhd:11825:403  */
+  /* find_the_damn_issue_sky130.vhd:11826:403  */
   assign n231_o = {n229_o, n230_o};
-  /* find_the_damn_issue_sky130.vhd:11826:217  */
+  /* find_the_damn_issue_sky130.vhd:11827:217  */
   assign n232_o = n231_o[7:6];
-  /* find_the_damn_issue_sky130.vhd:11826:230  */
+  /* find_the_damn_issue_sky130.vhd:11827:230  */
   assign n233_o = {n232_o, n136_o};
-  /* find_the_damn_issue_sky130.vhd:11826:437  */
+  /* find_the_damn_issue_sky130.vhd:11827:437  */
   assign n234_o = n231_o[4:0];
-  /* find_the_damn_issue_sky130.vhd:11826:249  */
+  /* find_the_damn_issue_sky130.vhd:11827:249  */
   assign n235_o = {n233_o, n234_o};
-  /* find_the_damn_issue_sky130.vhd:11828:39  */
+  /* find_the_damn_issue_sky130.vhd:11829:39  */
   assign n237_o = s_operatingmode_2 == 1'b0;
-  /* find_the_damn_issue_sky130.vhd:11829:50  */
+  /* find_the_damn_issue_sky130.vhd:11830:50  */
   assign n238_o = n235_o[7:2];
-  /* find_the_damn_issue_sky130.vhd:11829:63  */
+  /* find_the_damn_issue_sky130.vhd:11830:63  */
   assign n239_o = {n238_o, s_out};
-  /* find_the_damn_issue_sky130.vhd:11829:83  */
+  /* find_the_damn_issue_sky130.vhd:11830:83  */
   assign n240_o = n235_o[0];
-  /* find_the_damn_issue_sky130.vhd:11829:70  */
+  /* find_the_damn_issue_sky130.vhd:11830:70  */
   assign n241_o = {n239_o, n240_o};
-  /* find_the_damn_issue_sky130.vhd:11828:17  */
+  /* find_the_damn_issue_sky130.vhd:11829:17  */
   assign n242_o = n237_o ? n241_o : n235_o;
-  /* find_the_damn_issue_sky130.vhd:11836:41  */
+  /* find_the_damn_issue_sky130.vhd:11837:41  */
   assign n243_o = s_m_out_valid & s_m_out_ready;
-  /* find_the_damn_issue_sky130.vhd:11839:59  */
+  /* find_the_damn_issue_sky130.vhd:11840:59  */
   assign n245_o = n244_o[7:0];
-  /* find_the_damn_issue_sky130.vhd:11836:17  */
+  /* find_the_damn_issue_sky130.vhd:11837:17  */
   assign n246_o = n243_o ? s_m_out_3 : n245_o;
-  /* find_the_damn_issue_sky130.vhd:11841:41  */
+  /* find_the_damn_issue_sky130.vhd:11842:41  */
   assign n247_o = s_m_out_valid & s_m_out_ready;
-  /* find_the_damn_issue_sky130.vhd:11844:63  */
+  /* find_the_damn_issue_sky130.vhd:11845:63  */
   assign n249_o = n248_o[11:8];
-  /* find_the_damn_issue_sky130.vhd:11841:17  */
+  /* find_the_damn_issue_sky130.vhd:11842:17  */
   assign n251_o = n247_o ? 4'b0001 : n249_o;
-  /* find_the_damn_issue_sky130.vhd:11847:43  */
-  assign n253_o = n252_o[7:0];
   /* find_the_damn_issue_sky130.vhd:11848:43  */
+  assign n253_o = n252_o[7:0];
+  /* find_the_damn_issue_sky130.vhd:11849:43  */
   assign n255_o = n254_o[11:8];
-  /* find_the_damn_issue_sky130.vhd:11853:27  */
+  /* find_the_damn_issue_sky130.vhd:11854:27  */
   assign n274_o = ~rst_n;
-  /* find_the_damn_issue_sky130.vhd:11874:9  */
+  /* find_the_damn_issue_sky130.vhd:11875:9  */
   scl_fifo scl_fifo0 (
     .clk(clk),
     .rst_n(rst_n),
@@ -22495,7 +22496,7 @@ module tt_um_find_the_damn_issue
     .out_m_peekdata_data(scl_fifo0_out_m_peekdata_data),
     .out_m_pushfull(scl_fifo0_out_m_pushfull),
     .out_m_popempty(scl_fifo0_out_m_popempty));
-  /* find_the_damn_issue_sky130.vhd:11888:9  */
+  /* find_the_damn_issue_sky130.vhd:11889:9  */
   scl_streamdemux scl_streamdemux0 (
     .in_m_in_valid(s_usbep1_rx_valid),
     .in_m_in(s_usbep1_rx),
@@ -22509,7 +22510,7 @@ module tt_um_find_the_damn_issue
     .out_out_1_ready(scl_streamdemux0_out_out_1_ready),
     .out_out_1_valid(scl_streamdemux0_out_out_1_valid),
     .out_out_1(scl_streamdemux0_out_out_1));
-  /* find_the_damn_issue_sky130.vhd:11902:9  */
+  /* find_the_damn_issue_sky130.vhd:11903:9  */
   scl_uarttx scl_uarttx0 (
     .clk(clk),
     .rst_n(rst_n),
@@ -22519,7 +22520,7 @@ module tt_um_find_the_damn_issue
     .in_data(s_out_0),
     .out_baud_and_m_last(scl_uarttx0_out_baud_and_m_last),
     .out_out(scl_uarttx0_out_out));
-  /* find_the_damn_issue_sky130.vhd:11912:9  */
+  /* find_the_damn_issue_sky130.vhd:11913:9  */
   scl_bitbangengine scl_bitbangengine0 (
     .clk(clk),
     .rst_n(rst_n),
@@ -22571,7 +22572,7 @@ module tt_um_find_the_damn_issue
     .out_out_ready(),
     .out_out_valid(scl_bitbangengine0_out_out_valid),
     .out_out(scl_bitbangengine0_out_out));
-  /* find_the_damn_issue_sky130.vhd:11964:9  */
+  /* find_the_damn_issue_sky130.vhd:11965:9  */
   scl_uartrx scl_uartrx0 (
     .clk(clk),
     .rst_n(rst_n),
@@ -22579,7 +22580,7 @@ module tt_um_find_the_damn_issue
     .in_rx(s_rx),
     .out_out_valid(scl_uartrx0_out_out_valid),
     .out_out(scl_uartrx0_out_out));
-  /* find_the_damn_issue_sky130.vhd:11972:9  */
+  /* find_the_damn_issue_sky130.vhd:11973:9  */
   scl_streamarbiter scl_streamarbiter_2 (
     .clk(clk),
     .rst_n(rst_n),
@@ -22592,7 +22593,7 @@ module tt_um_find_the_damn_issue
     .out_const_0_mux1(scl_streamarbiter_2_out_const_0_mux1),
     .out_m_out_valid(scl_streamarbiter_2_out_m_out_valid),
     .out_m_out(scl_streamarbiter_2_out_m_out));
-  /* find_the_damn_issue_sky130.vhd:11985:9  */
+  /* find_the_damn_issue_sky130.vhd:11986:9  */
   scl_fifo_2 scl_fifo1 (
     .clk(clk),
     .rst_n(rst_n),
@@ -22608,37 +22609,37 @@ module tt_um_find_the_damn_issue
     .out_m_peekdata_endpoint(scl_fifo1_out_m_peekdata_endpoint),
     .out_m_pushfull(scl_fifo1_out_m_pushfull),
     .out_m_popempty(scl_fifo1_out_m_popempty));
-  /* find_the_damn_issue_sky130.vhd:11859:17  */
+  /* find_the_damn_issue_sky130.vhd:11860:17  */
   always @(posedge clk or posedge n274_o)
     if (n274_o)
       n346_q <= 1'b0;
     else
       n346_q <= s_unnamed_mux2;
-  /* find_the_damn_issue_sky130.vhd:11859:17  */
+  /* find_the_damn_issue_sky130.vhd:11860:17  */
   always @(posedge clk or posedge n274_o)
     if (n274_o)
       n347_q <= 1'b0;
     else
       n347_q <= s_set_line_coding_mux1;
-  /* find_the_damn_issue_sky130.vhd:11859:17  */
+  /* find_the_damn_issue_sky130.vhd:11860:17  */
   assign n348_o = s_unnamed_4 ? s_m_packetdata_2_bit_16 : s_dtr;
-  /* find_the_damn_issue_sky130.vhd:11859:17  */
+  /* find_the_damn_issue_sky130.vhd:11860:17  */
   always @(posedge clk or posedge n274_o)
     if (n274_o)
       n349_q <= 1'b0;
     else
       n349_q <= n348_o;
-  /* find_the_damn_issue_sky130.vhd:11859:17  */
+  /* find_the_damn_issue_sky130.vhd:11860:17  */
   assign n350_o = s_unnamed_4 ? s_m_packetdata_2_bit_17 : s_rts;
-  /* find_the_damn_issue_sky130.vhd:11859:17  */
+  /* find_the_damn_issue_sky130.vhd:11860:17  */
   always @(posedge clk or posedge n274_o)
     if (n274_o)
       n351_q <= 1'b0;
     else
       n351_q <= n350_o;
-  /* find_the_damn_issue_sky130.vhd:11859:17  */
+  /* find_the_damn_issue_sky130.vhd:11860:17  */
   assign n352_o = s_unnamed_eq_set_line_coding_and_m_phy_rx_error_not_and_m_pid_2_rewired_eq_const_11_and_nested_condition_m_phy_rx_eop ? s_m_packetdata_2_rewired : s_baudrate;
-  /* find_the_damn_issue_sky130.vhd:11859:17  */
+  /* find_the_damn_issue_sky130.vhd:11860:17  */
   always @(posedge clk or posedge n274_o)
     if (n274_o)
       n353_q <= 24'b000000011100001000000000;

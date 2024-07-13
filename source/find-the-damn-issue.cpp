@@ -237,6 +237,9 @@ protected:
 
 		pinIn(ui_in, "ui_in");
 		pinOut(uo_out, "uo_out");
+
+		// tiny tapout select signal
+		pinIn().setName("ena");
 	}
 
 	virtual void pinUio()
