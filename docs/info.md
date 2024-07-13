@@ -9,12 +9,14 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-Explain how your project works
+It will enumerate as a USB Communication Device Class (CDC) device.
+After power on it is in UART mode using pins TX, RX, DTR and RTS.
+TODO: More on BitBang mode for SPI, I2C, JTAG and GPIO.
 
 ## How to test
 
-Explain how to use your project
+Connect USB_DP and USB_DN to your computer. 
 
 ## External hardware
 
-List external hardware used in your project (e.g. PMOD, LED display, etc), if any
+An external pull up of 1.5k to 3.3V on USB_DP is required. 
