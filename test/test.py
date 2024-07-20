@@ -34,7 +34,9 @@ async def test_project(dut):
 
     # The following assersion is just an example of how to check the output values.
     # Change it to match the actual expected output of your module:
-    assert dut.uo_out.value == 50
+    #assert dut.uo_out.value == 50
+    # gatery is generating tests for us. see find_the_damn_issue_sky130 for the exported VHDL and Verilog testbenches.
+    # TODO: let the Makefile run our tests
 
     # Keep testing the module by changing the input values, waiting for
     # one or more clock cycles, and asserting the expected output values.

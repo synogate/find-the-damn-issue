@@ -12,7 +12,7 @@ obj
 *.sln
 *.vcxproj
 *.make
-Makefile
+/source/**/Makefile
 
 VHDL_out
 
